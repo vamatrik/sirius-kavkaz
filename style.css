@@ -388,12 +388,14 @@ body {
 
 #home {
     background-image: url('home.jpg') !important;
-    background-size: 100% auto !important;
+    background-size: 100% 100% !important;
     background-position: top center !important;
     background-repeat: no-repeat !important;
-    background-color: #f0f4f8 !important; 
-    height: 100vw !important;
-    min-height: auto !important;
+    background-color: transparent !important; 
+    width: 100% !important;
+    aspect-ratio: 1024 / 767 !important;
+    height: auto !important;
+    min-height: 0 !important;
     display: flex !important;
     align-items: flex-start !important;
     justify-content: center !important;
@@ -432,12 +434,14 @@ html {
 /* HOME SECTION */
 #home {
     background-image: url('home.jpg') !important;
-    background-size: 100% auto !important;
+    background-size: 100% 100% !important;
     background-position: top center !important;
     background-repeat: no-repeat !important;
-    background-color: #f0f4f8 !important; 
-    height: 100vw !important;
-    min-height: auto !important;
+    background-color: transparent !important; 
+    width: 100% !important;
+    aspect-ratio: 1024 / 767 !important;
+    height: auto !important;
+    min-height: 0 !important;
     display: flex !important;
     align-items: flex-start !important;
     justify-content: center !important;
