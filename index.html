@@ -19,7 +19,7 @@
     </nav>
 
     <!-- ГЛАВНАЯ СТРАНИЦА -->
-    <section id="home" class="page active">
+    <section id="home" class="page active" style="min-height: calc(100vh - 74px);">
 <div class="hero-content">
     <div class="hero-card">
         <h2>От моря к Кавказу</h2>
@@ -30,7 +30,7 @@
 </div></section>
 
     <!-- ПУТЕВОДИТЕЛЬ -->
-    <section id="guide" class="page">
+    <section id="guide" class="page" style="min-height: calc(100vh - 74px); background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9)), url(https://avatars.mds.yandex.net/get-altay/18769949/2a0000019c4c1a35d071a4cdfc8c23fd89fc/L_height); background-size: cover; background-position: center; padding: 20px;">
 <h2>Путеводитель по региону</h2>
 <div class="guide-container">
     <div class="guide-sidebar">
@@ -63,57 +63,50 @@
 </section>
 
     <!-- МАРШРУТ -->
+    
     <section id="route" class="page">
-        <div class="container mt-2">
-            <h2 class="text-center">Интерактивный маршрут</h2>
-            <p class="text-center route-desc">От Адлера до Роза Пик. Нажмите на точки на карте, чтобы узнать подробности.</p>
-            
-            <div class="map-layout">
-                <!-- Контейнер для карты -->
-                <div id="map" class="map-container"></div>
-                
-                <!-- Панель информации о точке -->
-                <div id="point-info" class="point-info-panel">
-                    <div class="empty-state">
-                        <span style="font-size: 3rem;">👆</span>
-                        <p>Выберите точку на карте, чтобы увидеть описание остановки</p>
+        <div class="route-container" style="padding: 20px;">
+            <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Интерактивный маршрут</h2>
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+            <div class="info-panel">
+                <div class="empty-state" id="empty-state">
+                    <h3>Выберите точку на карте</h3>
+                    <p>Нажмите на любой маркер, чтобы узнать подробности.</p>
+                </div>
+                <div class="info-content" id="info-content" style="display: none;">
+                    <div class="info-media">
+                        <img id="p-img" src="" alt="">
+                        <div id="p-video" style="display: none;"></div>
                     </div>
-                    <div class="info-content" style="display: none;">
-                        <!-- Контейнер для медиа (фото или видео) -->
-                        <div id="p-media-container" style="margin-bottom: 1rem;">
-                            <img id="p-img" src="" alt="Фото места" class="point-image" style="display: block;">
-                            <div id="p-video" style="display: none; width: 100%; height: 200px;"></div>
-                        </div>
-
+                    <div class="info-text">
                         <div class="p-tags">
                             <span class="tag" id="p-category">Категория</span>
                         </div>
                         <h3 id="p-title"><a href="#" target="_blank" id="p-title-link" style="color: inherit; text-decoration: none;">Название точки</a></h3>
-                        
                         <div class="info-block">
                             <h4>Вкратце:</h4>
-                            <p id="p-brief">Краткое описание</p>
+                            <p id="p-brief"></p>
                         </div>
-                        
                         <div class="info-block">
-                            <h4>Подробно:</h4>
-                            <p id="p-desc">Подробное описание</p>
+                            <h4>Описание:</h4>
+                            <p id="p-desc"></p>
                         </div>
-                        
-                        <div class="info-block highlight-block">
-                            <h4>Почему это важно:</h4>
-                            <p id="p-importance">Значимость</p>
+                        <div class="info-block">
+                            <h4>Значение:</h4>
+                            <p id="p-importance"></p>
                         </div>
-                        
-                        <div class="info-block fact-block">
-                            <h4>💡 Интересный факт:</h4>
-                            <p id="p-fact">Факт</p>
+                        <div class="info-block">
+                            <h4>Интересный факт:</h4>
+                            <p id="p-fact"></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Скрипты -->
     <script src="script.js"></script>
