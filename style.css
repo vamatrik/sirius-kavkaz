@@ -387,11 +387,17 @@ body {
 }
 
 #home {
-    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4)), url('https://avatars.mds.yandex.net/get-altay/18769949/2a0000019c4c1a35d071a4cdfc8c23fd89fc/L_height') center/cover no-repeat;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
+    background-image: url('home.jpg') !important;
+    background-size: 100% auto !important;
+    background-position: top center !important;
+    background-repeat: no-repeat !important;
+    background-color: #f0f4f8 !important; 
+    height: 100vw !important;
+    min-height: auto !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: center !important;
+    padding-top: 20vh !important;
 }
 
 /* ENABLE SMOOTH SCROLLING */
@@ -426,13 +432,16 @@ html {
 /* HOME SECTION */
 #home {
     background-image: url('home.jpg') !important;
-    background-size: contain !important;
+    background-size: 100% auto !important;
     background-position: top center !important;
     background-repeat: no-repeat !important;
     background-color: #f0f4f8 !important; 
+    height: 100vw !important;
+    min-height: auto !important;
     display: flex !important;
-    align-items: center !important;
+    align-items: flex-start !important;
     justify-content: center !important;
+    padding-top: 20vh !important;
 }
 
 /* APPLE GLASS CARD */

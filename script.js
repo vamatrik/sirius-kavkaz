@@ -25,24 +25,6 @@ function switchGuide(event, targetId) {
 }
 
 // Навигация
-);
-    
-    document.querySelectorAll('.nav-links a').forEach(link => {
-        link.classList.remove('active');
-    });
-    
-    document.getElementById(pageId).classList.add('active');
-    document.getElementById('link-' + pageId).classList.add('active');
-
-    if(pageId === 'route' && window.mapObj) {
-        window.mapObj.container.fitToViewport();
-        window.mapObj.setBounds(window.mapObj.geoObjects.getBounds(), {
-            checkZoomRange: true,
-            zoomMargin: 30
-        });
-    }
-}
-
 ymaps.ready(initMap);
 
 function initMap() {
