@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>От моря к Кавказу</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Подключаем Yandex Maps API -->
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">🧭 Сириус и Сочи</div>
+        <ul class="nav-links">
+            <li><a href="#" onclick="showPage('home')" class="active" id="link-home">Главная</a></li>
+            <li><a href="#" onclick="showPage('guide')" id="link-guide">Путеводитель</a></li>
+            <li><a href="#" onclick="showPage('route')" id="link-route">Маршрут</a></li>
+        </ul>
+    </nav>
+
+    <!-- ГЛАВНАЯ СТРАНИЦА -->
+    <section id="home" class="page active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>От моря к Кавказу: Сириус, древние леса и горы</h1>
+                <p>Интерактивный историко-культурный туристический маршрут</p>
+                <button onclick="showPage('route')" class="btn">Перейти к маршруту</button>
+            </div>
+        </div>
+        <div class="container mt-2">
+            <h2>О проекте</h2>
+            <p>После Олимпиады 2014 года территория у Черного моря не превратилась в музей под открытым небом. Она получила новое развитие. Мы решили проследить, как за несколько десятков километров меняется пространство — от инновационной федеральной территории «Сириус» до древних самшитовых лесов, глубоких ущелий и заснеженных горных вершин Кавказа.</p>
+            <p><strong>Регион:</strong> Краснодарский край (Федеральная территория «Сириус» и горные окрестности Большого Сочи).</p>
+        </div>
+    </section>
+
+    <!-- ПУТЕВОДИТЕЛЬ -->
+    <section id="guide" class="page">
+        <div class="hero guide-hero">
+            <div class="hero-content">
+                <h1>Путеводитель по региону</h1>
+                <p>Узнайте больше о географии, экономике и культуре</p>
+            </div>
+        </div>
+        <div class="container guide-content mt-2">
+            <div class="guide-grid">
+                <div class="guide-card">
+                    <h3>🌍 География и природа</h3>
+                    <p>Уникальное сочетание субтропического климата на побережье и снежных вершин в горах. Регион богат реликтовыми лесами (Тисо-самшитовая роща), каньонами и пещерами. Федеральная территория «Сириус» располагается в Имеретинской низменности.</p>
+                </div>
+                <div class="guide-card">
+                    <h3>💼 Экономика и ресурсы</h3>
+                    <p>Основа экономики — туризм (всесезонные горнолыжные курорты), наука и образование (центр «Сириус»), а также сельское хозяйство и аквакультура (крупнейший в России форелеводческий завод «Адлер»).</p>
+                </div>
+                <div class="guide-card">
+                    <h3>🏛 Культура и наследие</h3>
+                    <p>Регион хранит следы древних людей (Ахштырская пещера, 70 тыс. лет назад), средневековых государств (Генуэзская крепость) и грандиозное наследие Зимних Олимпийских игр 2014 года, которое сегодня служит базой для развития науки, искусства и спорта.</p>
+                </div>
+                <div class="guide-card">
+                    <h3>👥 Население и религия</h3>
+                    <p>Многонациональный регион: здесь проживают русские, армяне, греки, адыги (шапсуги) и другие народы. Это создает богатое культурное и гастрономическое разнообразие. Доминирующая религия — христианство, также исторически представлен ислам.</p>
+                </div>
+                <div class="guide-card" style="grid-column: 1 / -1;">
+                    <h3>🌟 Статус «Сириуса»</h3>
+                    <p>Важный нюанс: формально федеральная территория «Сириус» — не субъект РФ и не обычный регион, а <strong>особое публично-правовое образование с федеральным статусом</strong> (ФЗ № 437-ФЗ). При этом она находится в Краснодарском крае и граничит с городским округом Сочи.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- МАРШРУТ -->
+    <section id="route" class="page">
+        <div class="container mt-2">
+            <h2 class="text-center">Интерактивный маршрут</h2>
+            <p class="text-center route-desc">От Адлера до Роза Пик. Нажмите на точки на карте, чтобы узнать подробности.</p>
+            
+            <div class="map-layout">
+                <!-- Контейнер для карты -->
+                <div id="map" class="map-container"></div>
+                
+                <!-- Панель информации о точке -->
+                <div id="point-info" class="point-info-panel">
+                    <div class="empty-state">
+                        <span style="font-size: 3rem;">👆</span>
+                        <p>Выберите точку на карте, чтобы увидеть описание остановки</p>
+                    </div>
+                    <div class="info-content" style="display: none;">
+                        <!-- Контейнер для медиа (фото или видео) -->
+                        <div id="p-media-container" style="margin-bottom: 1rem;">
+                            <img id="p-img" src="" alt="Фото места" class="point-image" style="display: block;">
+                            <div id="p-video" style="display: none; width: 100%; height: 200px;"></div>
+                        </div>
+
+                        <div class="p-tags">
+                            <span class="tag" id="p-category">Категория</span>
+                        </div>
+                        <h3 id="p-title"><a href="#" target="_blank" id="p-title-link" style="color: inherit; text-decoration: none;">Название точки</a></h3>
+                        
+                        <div class="info-block">
+                            <h4>Вкратце:</h4>
+                            <p id="p-brief">Краткое описание</p>
+                        </div>
+                        
+                        <div class="info-block">
+                            <h4>Подробно:</h4>
+                            <p id="p-desc">Подробное описание</p>
+                        </div>
+                        
+                        <div class="info-block highlight-block">
+                            <h4>Почему это важно:</h4>
+                            <p id="p-importance">Значимость</p>
+                        </div>
+                        
+                        <div class="info-block fact-block">
+                            <h4>💡 Интересный факт:</h4>
+                            <p id="p-fact">Факт</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Скрипты -->
+    <script src="script.js"></script>
+</body>
+</html>
