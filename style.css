@@ -479,3 +479,5 @@ html {
     max-width: 1200px;
     margin: 0 auto;
 }
+
+.p-tags { margin-top: 15px; margin-bottom: 10px; }

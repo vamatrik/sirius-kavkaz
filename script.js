@@ -111,6 +111,7 @@ function initMap() {
 function showPointInfo(point) {
     document.querySelector('.empty-state').style.display = 'none';
     document.querySelector('.info-content').style.display = 'block';
+    setTimeout(() => { document.querySelector(\'.info-panel\').scrollIntoView({behavior: \'smooth\', block: \'center\'}); }, 100);
     
     const imgEl = document.getElementById('p-img');
     const videoEl = document.getElementById('p-video');
