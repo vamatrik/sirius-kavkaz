@@ -7,11 +7,11 @@ const guideBg = {
     'guide-pop': 'https://avatars.mds.yandex.net/get-altay/18748727/2a0000019db9f02b67007d4c6c3cebce75cf/L_height'
 };
 
-function switchGuide(targetId) {
+function switchGuide(event, targetId) {
     document.querySelectorAll('#guide-nav li').forEach(li => {
         li.classList.remove('active');
     });
-    event.target.classList.add('active');
+    if(event && event.currentTarget) event.currentTarget.classList.add('active');
     
     document.querySelectorAll('.guide-pane').forEach(pane => {
         pane.classList.remove('active');
@@ -25,10 +25,7 @@ function switchGuide(targetId) {
 }
 
 // Навигация
-function showPage(pageId) {
-    document.querySelectorAll('.page').forEach(page => {
-        page.classList.remove('active');
-    });
+);
     
     document.querySelectorAll('.nav-links a').forEach(link => {
         link.classList.remove('active');

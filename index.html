@@ -12,33 +12,33 @@
     <nav class="navbar">
         <div class="logo">🧭 Сириус и Сочи</div>
         <ul class="nav-links">
-            <li><a href="#" onclick="showPage('home')" class="active" id="link-home">Главная</a></li>
-            <li><a href="#" onclick="showPage('guide')" id="link-guide">Путеводитель</a></li>
-            <li><a href="#" onclick="showPage('route')" id="link-route">Маршрут</a></li>
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#guide">Путеводитель</a></li>
+            <li><a href="#route">Маршрут</a></li>
         </ul>
     </nav>
 
     <!-- ГЛАВНАЯ СТРАНИЦА -->
-    <section id="home" class="page active" style="min-height: calc(100vh - 74px);">
+    <section id="home" class="scroll-section">
 <div class="hero-content">
     <div class="hero-card">
         <h2>От моря к Кавказу</h2>
         <p>Добро пожаловать в интерактивный путеводитель по уникальному маршруту, соединяющему побережье Черного моря и заснеженные вершины Кавказских гор.</p>
-        <button onclick="showPage('guide')" class="btn">Читать путеводитель</button>
-        <button onclick="showPage('route')" class="btn btn-primary">Смотреть маршрут</button>
+        <button onclick="document.getElementById('guide').scrollIntoView({behavior: 'smooth'})" class="btn">Читать путеводитель</button>
+        <button onclick="document.getElementById('route').scrollIntoView({behavior: 'smooth'})" class="btn btn-primary">Смотреть маршрут</button>
     </div>
 </div></section>
 
     <!-- ПУТЕВОДИТЕЛЬ -->
-    <section id="guide" class="page" style="min-height: calc(100vh - 74px); background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9)), url(https://avatars.mds.yandex.net/get-altay/18769949/2a0000019c4c1a35d071a4cdfc8c23fd89fc/L_height); background-size: cover; background-position: center; padding: 20px;">
+    <section id="guide" class="scroll-section">
 <h2>Путеводитель по региону</h2>
 <div class="guide-container">
     <div class="guide-sidebar">
         <ul id="guide-nav">
-            <li class="active" onclick="switchGuide('guide-intro')">Введение</li>
-            <li onclick="switchGuide('guide-geo')">География и природа</li>
-            <li onclick="switchGuide('guide-eco')">Экономика и ресурсы</li>
-            <li onclick="switchGuide('guide-pop')">Население и культура</li>
+            <li class="active" onclick="switchGuide(event, 'guide-intro')">Введение</li>
+            <li onclick="switchGuide(event, 'guide-geo')">География и природа</li>
+            <li onclick="switchGuide(event, 'guide-eco')">Экономика и ресурсы</li>
+            <li onclick="switchGuide(event, 'guide-pop')">Население и культура</li>
         </ul>
     </div>
     <div class="guide-content">
@@ -64,7 +64,7 @@
 
     <!-- МАРШРУТ -->
     
-    <section id="route" class="page">
+    <section id="route" class="scroll-section">
         <div class="route-container" style="padding: 20px;">
             <h2 style="text-align: center; color: #333; margin-bottom: 20px;">Интерактивный маршрут</h2>
             <div class="map-container">
