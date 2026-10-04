@@ -180,8 +180,8 @@ const routePoints = [
         "fact": "Длина трассы составляла 5848 метров, а болиды разгонялись здесь свыше 330 км/ч.",
         "images": [
             {
-                "url": "https://avatars.mds.yandex.net/get-altay/14299948/2a00000192e4de4b497cb11de1e0fb2eecf1/L_height",
-                "caption": "Трасса Сочи Автодрома"
+                "url": "https://images.unsplash.com/photo-1541443131876-44b03de101c5?w=800&q=80",
+                "caption": "Сочи Автодром"
             }
         ]
     },
@@ -200,8 +200,8 @@ const routePoints = [
         "fact": "Здесь находится 1500-сильный Dodge Viper для дрэг-рейсинга, который способен разгоняться до 100 км/ч чуть более чем за 1 секунду.",
         "images": [
             {
-                "url": "https://avatars.mds.yandex.net/get-altay/10206101/2a0000018f6f69046c3b6f00e9bc5a64353d/L_height",
-                "caption": "Болиды и суперкары в музее Панули"
+                "url": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800&q=80",
+                "caption": "Музей Ника Панули"
             }
         ]
     },
