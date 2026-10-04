@@ -16,6 +16,10 @@ const routePoints = [
             {
                 "url": "https://avatars.mds.yandex.net/get-altay/1005628/2a000001892c348aa71914d331716792e2ab/L_height",
                 "caption": "Панорама Имеретинского порта"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Второе фото"
             }
         ]
     },
@@ -36,6 +40,10 @@ const routePoints = [
             {
                 "url": "https://avatars.mds.yandex.net/get-altay/18769949/2a0000019c4c1a35d071a4cdfc8c23fd89fc/L_height",
                 "caption": "Вид на Олимпийский пляж и море"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Второе фото"
             }
         ]
     },
@@ -56,6 +64,10 @@ const routePoints = [
             {
                 "url": "https://avatars.mds.yandex.net/get-altay/1246719/2a00000163996b11cf8fa6eb65efad6ba738/L_height",
                 "caption": "Стадион Фишт на закате"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Второе фото"
             }
         ]
     },
@@ -101,6 +113,10 @@ const routePoints = [
             {
                 "url": "https://avatars.mds.yandex.net/get-altay/813485/2a000001603403bc8148cf35a37122b90fdb/L_height",
                 "caption": "ЛД Айсберг в Олимпийском парке"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Второе фото"
             }
         ]
     },
@@ -121,6 +137,10 @@ const routePoints = [
             {
                 "url": "https://avatars.mds.yandex.net/get-altay/11421964/2a0000018cf241332914b3272b98bdf28da0/L_height",
                 "caption": "Экспонаты внутри музея Леонардо"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Второе фото"
             }
         ]
     },
@@ -141,6 +161,10 @@ const routePoints = [
             {
                 "url": "https://avatars.mds.yandex.net/get-altay/5548986/2a0000018400c3d368869bb8c1bfe2998c7d/L_height",
                 "caption": "Шоу молний в музее Теслы"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Второе фото"
             }
         ],
         "videoUrl": "https://rutube.ru/play/embed/6b4ab428d1e21dc55872c9d3857a9e64"
@@ -160,8 +184,12 @@ const routePoints = [
         "fact": "Огромные площади бывшего медиацентра позволили разместить здесь не только залы, но и передовые лаборатории генетики и IT.",
         "images": [
             {
-                "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Sirius_Concert_Center_Construction.jpg?width=800",
-                "caption": "Здание концертного центра Сириус"
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
             }
         ]
     },
@@ -180,8 +208,12 @@ const routePoints = [
         "fact": "Длина трассы составляла 5848 метров, а болиды разгонялись здесь свыше 330 км/ч.",
         "images": [
             {
-                "url": "https://avatars.mds.yandex.net/get-altay/14299948/2a00000192e4de4b497cb11de1e0fb2eecf1/L_height",
-                "caption": "Трасса Сочи Автодрома"
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
             }
         ]
     },
@@ -200,8 +232,12 @@ const routePoints = [
         "fact": "Здесь находится 1500-сильный Dodge Viper для дрэг-рейсинга, который способен разгоняться до 100 км/ч чуть более чем за 1 секунду.",
         "images": [
             {
-                "url": "https://avatars.mds.yandex.net/get-altay/10206101/2a0000018f6f69046c3b6f00e9bc5a64353d/L_height",
-                "caption": "Болиды и суперкары в музее Панули"
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
             }
         ]
     },
@@ -220,8 +256,12 @@ const routePoints = [
         "fact": "Отель-замок «Богатырь», являющийся частью парка, выглядит как настоящий сказочный дворец и признан одной из самых необычных гостиниц России.",
         "images": [
             {
-                "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Sochipark_in_the_evening.jpg?width=800",
-                "caption": "Аттракционы Сочи Парка и замок Богатырь"
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
             }
         ]
     },
@@ -242,6 +282,10 @@ const routePoints = [
             {
                 "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Drava_swan.jpg?width=800",
                 "caption": "Лебеди и водоемы орнитологического парка"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Второе фото"
             }
         ]
     },
@@ -332,8 +376,12 @@ const routePoints = [
         "fact": "Температура в каменном лабиринте даже в самую сильную летнюю жару всегда на несколько градусов ниже, чем на открытой местности.",
         "images": [
             {
-                "url": "https://avatars.mds.yandex.net/get-altay/4741753/2a000001815349e5d4cb5fbaee2efb3bfda0/L_height",
-                "caption": "Тропа внутри каменного лабиринта"
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
             }
         ]
     },
@@ -354,6 +402,10 @@ const routePoints = [
             {
                 "url": "https://avatars.mds.yandex.net/get-altay/13461681/2a00000190f9040a9bc57bc0c0059d1e38c4/L_height",
                 "caption": "Буковый лес"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Второе фото"
             }
         ]
     },
@@ -374,6 +426,10 @@ const routePoints = [
             {
                 "url": "https://avatars.mds.yandex.net/get-altay/10812438/2a0000018c3f84bfb686579f37e3ad5380f0/L_height",
                 "caption": "Руины башни крепости"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Второе фото"
             }
         ]
     },
@@ -392,8 +448,12 @@ const routePoints = [
         "fact": "Даже в августе вода в каньоне остается бодряще холодной (около 15-17 градусов), что спасает от летнего зноя.",
         "images": [
             {
-                "url": "https://avatars.mds.yandex.net/get-altay/10313837/2a0000018d451296c0975e523f3885a5a1ce/L_height",
-                "caption": "Скалы каньона Чертовы ворота"
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
             }
         ]
     },
@@ -466,36 +526,20 @@ const routePoints = [
             {
                 "url": "https://avatars.mds.yandex.net/get-altay/15112342/2a00000194ef20b6759a5c781dda7d098022/L_height",
                 "caption": "Аттракцион в скай парке"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Второе фото"
             }
         ]
     },
     {
         "id": "12",
         "coords": [
-            43.66848,
-            40.257731
-        ],
-        "title": "12. Кругозор Ефремова",
-        "yandexUrl": "https://yandex.ru/maps/-/CXU8E0M9",
-        "category": "Горы / Смотровая",
-        "brief": "Смотровая площадка с захватывающим панорамным видом на всю Красную Поляну.",
-        "desc": "Названа в честь советского ученого-географа и поэта Юрия Ефремова, который очень любил эти места. Площадка расположена на горе Монашка. Чтобы добраться до неё, нужно пройти по живописной лесной тропе через буковый лес. Отсюда открывается лучший вид на долину реки Мзымта, поселок Красная Поляна и заснеженные пики Главного Кавказского хребта.",
-        "importance": "Одна из самых доступных и красивых бесплатных видовых точек рядом с курортом.",
-        "fact": "Здесь установлен памятный камень Юрию Ефремову с выбитыми на нём строками из его стихов о Кавказе.",
-        "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/18748727/2a0000019db9f02b67007d4c6c3cebce75cf/L_height",
-                "caption": "Вид со смотровой площадки"
-            }
-        ]
-    },
-    {
-        "id": "13",
-        "coords": [
             43.673304,
             40.182899
         ],
-        "title": "13. Курорт Красная Поляна",
+        "title": "12. Курорт Красная Поляна",
         "yandexUrl": "https://yandex.ru/maps/org/kurort_krasnaya_polyana/1214311519/",
         "category": "Горы / Курорт",
         "brief": "Круглогодичный горный курорт с богатой инфраструктурой.",
@@ -504,8 +548,36 @@ const routePoints = [
         "fact": "Архитектура нижней части курорта создана французским архитектором Пьером Динером в стиле неоклассицизма, поэтому её часто называют «сочинскими Карловыми Варами».",
         "images": [
             {
-                "url": "https://avatars.mds.yandex.net/get-altay/18748727/2a0000019db9f02b67007d4c6c3cebce75cf/L_height",
-                "caption": "Панорама высоты 960 метров"
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
+            }
+        ]
+    },
+    {
+        "id": "13",
+        "coords": [
+            43.66848,
+            40.257731
+        ],
+        "title": "13. Кругозор Ефремова",
+        "yandexUrl": "https://yandex.ru/maps/-/CXU8E0M9",
+        "category": "Горы / Смотровая",
+        "brief": "Смотровая площадка с захватывающим панорамным видом на всю Красную Поляну.",
+        "desc": "Названа в честь советского ученого-географа и поэта Юрия Ефремова, который очень любил эти места. Площадка расположена на горе Монашка. Чтобы добраться до неё, нужно пройти по живописной лесной тропе через буковый лес. Отсюда открывается лучший вид на долину реки Мзымта, поселок Красная Поляна и заснеженные пики Главного Кавказского хребта.",
+        "importance": "Одна из самых доступных и красивых бесплатных видовых точек рядом с курортом.",
+        "fact": "Здесь установлен памятный камень Юрию Ефремову с выбитыми на нём строками из его стихов о Кавказе.",
+        "images": [
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
             }
         ]
     },
@@ -524,8 +596,12 @@ const routePoints = [
         "fact": "Звон часов на башне Ратуши разносится по всей долине каждый час, а дизайн циферблата вдохновлен часами на вокзале Сочи.",
         "images": [
             {
-                "url": "https://avatars.mds.yandex.net/get-altay/11831818/2a0000018f6c5bbfa7726b2b52b2bc3f4129/L_height",
-                "caption": "Ратуша"
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
+            },
+            {
+                "url": "https://placehold.co/800x600/222222/FFFFFF/png?text=WIP+(Work+in+Progress)",
+                "caption": "WIP - Подберем фото с командой"
             }
         ]
     },
