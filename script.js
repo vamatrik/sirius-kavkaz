@@ -142,7 +142,8 @@ const routePoints = [
                 "url": "https://avatars.mds.yandex.net/get-altay/5548986/2a0000018400c3d368869bb8c1bfe2998c7d/L_height",
                 "caption": "Шоу молний в музее Теслы"
             }
-        ]
+        ],
+        "videoUrl": "https://rutube.ru/play/embed/6b4ab428d1e21dc55872c9d3857a9e64"
     },
     {
         "id": "3.6",
