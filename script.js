@@ -82,7 +82,7 @@ const routePoints = [
                 "caption": "Фонтаны крупным планом"
             }
         ],
-        "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
+        "videoUrl": "https://rutube.ru/play/embed/79d9d7f3261c1a056ec2e8f32677828a"
     },
     {
         "id": "3.3",
