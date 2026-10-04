@@ -42,7 +42,7 @@
         </ul>
     </div>
     <div class="guide-content">
-        <div id="guide-intro" class="guide-pane active">
+        <div id="guide-intro" class="guide-pane">
             <h3>Обзор региона</h3>
             <p>Наш маршрут проходит по уникальной территории — от федеральной территории «Сириус» (Имеретинская низменность) через Хостинский район Сочи к горному кластеру Красной Поляны. Это место, где субтропики встречаются с ледниками.</p>
         </div>
@@ -76,10 +76,8 @@
                     <p>Нажмите на любой маркер, чтобы узнать подробности.</p>
                 </div>
                 <div class="info-content" id="info-content" style="display: none;">
-                    <div class="info-media">
-                        <img id="p-img" src="" alt="">
-                        <div id="p-video" style="display: none;"></div>
-                    </div>
+                    <div id="p-gallery-top" class="masonry-gallery"></div>
+                    <div id="p-video-container" style="display: none; margin-bottom: 20px;"></div>
                     <div class="info-text">
                         <div class="p-tags">
                             <span class="tag" id="p-category">Категория</span>
@@ -102,6 +100,7 @@
                             <p id="p-fact"></p>
                         </div>
                     </div>
+                    <div id="p-gallery-bottom" class="masonry-gallery"></div>
                 </div>
             </div>
         </div>

@@ -3,97 +3,54 @@ import re
 with open('index.html', 'r', encoding='utf-8') as f:
     html = f.read()
 
-home_replacement = '''
-<div class="hero-content">
-    <div class="hero-card">
-        <h2>От моря к Кавказу</h2>
-        <p>Добро пожаловать в интерактивный путеводитель по уникальному маршруту, соединяющему побережье Черного моря и заснеженные вершины Кавказских гор.</p>
-        <button onclick="showPage('guide')" class="btn">Читать путеводитель</button>
-        <button onclick="showPage('route')" class="btn btn-primary">Смотреть маршрут</button>
-    </div>
-</div>'''
-html = re.sub(r'(<section id="home"[^>]*>).*?(</section>)', r'\1' + home_replacement + r'\2', html, flags=re.DOTALL)
+# Add new tabs to Guide
+old_tabs = '''                <ul id="guide-nav">
+                    <li class="active" onclick="switchGuide(event, 'guide-intro')">Введение</li>
+                    <li onclick="switchGuide(event, 'guide-geo')">География и природа</li>
+                    <li onclick="switchGuide(event, 'guide-eco')">Экология</li>
+                    <li onclick="switchGuide(event, 'guide-pop')">Популяризация науки</li>
+                </ul>'''
 
-guide_replacement = '''
-<h2>Путеводитель по региону</h2>
-<div class="guide-container">
-    <div class="guide-sidebar">
-        <ul id="guide-nav">
-            <li class="active" onclick="switchGuide('guide-intro')">Введение</li>
-            <li onclick="switchGuide('guide-geo')">География и природа</li>
-            <li onclick="switchGuide('guide-eco')">Экономика и ресурсы</li>
-            <li onclick="switchGuide('guide-pop')">Население и культура</li>
-        </ul>
-    </div>
-    <div class="guide-content">
-        <div id="guide-intro" class="guide-pane active">
-            <h3>Обзор региона</h3>
-            <p>Наш маршрут проходит по уникальной территории — от федеральной территории «Сириус» (Имеретинская низменность) через Хостинский район Сочи к горному кластеру Красной Поляны. Это место, где субтропики встречаются с ледниками.</p>
-        </div>
-        <div id="guide-geo" class="guide-pane">
-            <h3>География и природа</h3>
-            <p>Регион отличается уникальным климатом: у моря царят влажные субтропики, а в горах — альпийский пояс. Здесь расположены реликтовые леса (например, Тисо-самшитовая роща, пережившая ледниковый период) и глубокие ущелья рек (Мзымта, Хоста).</p>
-        </div>
-        <div id="guide-eco" class="guide-pane">
-            <h3>Экономика и ресурсы</h3>
-            <p>Основа экономики — туризм (пляжный и горнолыжный), а также наука и образование (центр «Сириус»). Также развито сельское хозяйство — здесь выращивают чай, цитрусовые, а в реках разводят ценные породы рыб (форелевое хозяйство).</p>
-        </div>
-        <div id="guide-pop" class="guide-pane">
-            <h3>Население и культура</h3>
-            <p>Сочи — многонациональный город. Здесь переплелись культуры русских, армян, греков, грузин и адыгов. Олимпийское наследие сильно повлияло на современный облик города, превратив его в курорт мирового уровня.</p>
-        </div>
-    </div>
-</div>
-'''
-html = re.sub(r'(<section id="guide"[^>]*>).*?(</section>)', r'\1' + guide_replacement + r'\2', html, flags=re.DOTALL)
+new_tabs = '''                <ul id="guide-nav">
+                    <li class="active" onclick="switchGuide(event, 'guide-brief')">Вкратце о маршруте</li>
+                    <li onclick="switchGuide(event, 'guide-intro')">Введение</li>
+                    <li onclick="switchGuide(event, 'guide-geo')">География и природа</li>
+                    <li onclick="switchGuide(event, 'guide-eco')">Экология</li>
+                    <li onclick="switchGuide(event, 'guide-flora')">Флора и фауна</li>
+                    <li onclick="switchGuide(event, 'guide-pop')">Популяризация науки</li>
+                </ul>'''
+html = html.replace(old_tabs, new_tabs)
 
-# Let's fix route-container in HTML: just wrap info-panel contents in a div for layout if needed
-route_replacement = '''
-<div class="route-container">
-    <div class="map-container">
-        <div id="map"></div>
-    </div>
-    <div class="info-panel">
-        <div class="empty-state">
-            <h3>Выберите точку на карте</h3>
-            <p>Нажмите на любой маркер, чтобы узнать подробности.</p>
-        </div>
-        <div class="info-content" style="display: none;">
-            <div class="info-media">
-                <img id="p-img" src="" alt="">
-                <div id="p-video" style="display: none;"></div>
-            </div>
-            <div class="info-text">
-                <div class="p-tags">
-                    <span class="tag" id="p-category">Категория</span>
+# Add new panes
+new_panes = '''                <!-- Pane: Brief -->
+                <div id="guide-brief" class="guide-pane active">
+                    <h3>Вкратце о маршруте</h3>
+                    <p>Наш маршрут пролегает от теплого побережья Имеретинской низменности, где современные архитектурные шедевры соседствуют с яхтенными маринами и пляжами, до заснеженных вершин Красной Поляны. Вы проедете через уникальные реликтовые леса, увидите древние пещеры, насладитесь видами горных каньонов и прикоснетесь к передовым технологиям в Олимпийском парке.</p>
                 </div>
-                <h3 id="p-title"><a href="#" target="_blank" id="p-title-link" style="color: inherit; text-decoration: none;">Название точки</a></h3>
-                
-                <div class="info-block">
-                    <h4>Вкратце:</h4>
-                    <p id="p-brief"></p>
+                <!-- Pane: Intro -->'''
+html = html.replace('<!-- Pane: Intro -->', new_panes).replace('<div id="guide-intro" class="guide-pane active">', '<div id="guide-intro" class="guide-pane">')
+
+flora_pane = '''                <!-- Pane: Flora -->
+                <div id="guide-flora" class="guide-pane">
+                    <h3>Флора и фауна</h3>
+                    <p>Кавказский биосферный заповедник и национальный парк Сочи берегут уникальное биоразнообразие. Здесь встречаются реликтовые леса колхидского типа, самшит, тис ягодный. В горах обитают кавказские серны, бурые медведи, а в небе парят беркуты и белоголовые сипы. Орнитологический парк в Имеретинской низменности стал домом для сотен видов перелетных птиц.</p>
                 </div>
-                
-                <div class="info-block">
-                    <h4>Описание:</h4>
-                    <p id="p-desc"></p>
-                </div>
-                
-                <div class="info-block">
-                    <h4>Значение:</h4>
-                    <p id="p-importance"></p>
-                </div>
-                
-                <div class="info-block">
-                    <h4>Интересный факт:</h4>
-                    <p id="p-fact"></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-'''
-html = re.sub(r'<div class="route-container">.*?</div>\s*</section>', route_replacement + '</section>', html, flags=re.DOTALL)
+                <!-- Pane: Pop -->'''
+html = html.replace('<!-- Pane: Pop -->', flora_pane)
+
+# Change info panel structure to support masonry
+old_info_content = '''                    <div class="info-media">
+                        <img id="p-img" src="" alt="">
+                        <div id="p-video" style="display: none;"></div>
+                    </div>
+                    <div class="info-text">'''
+
+new_info_content = '''                    <div id="p-gallery-top" class="masonry-gallery"></div>
+                    <div id="p-video-container" style="display: none; margin-bottom: 20px;"></div>
+                    <div class="info-text">'''
+html = html.replace(old_info_content, new_info_content)
+
+html = html.replace('                        </div>\n                    </div>\n                </div>', '                        </div>\n                    </div>\n                    <div id="p-gallery-bottom" class="masonry-gallery"></div>\n                </div>')
 
 with open('index.html', 'w', encoding='utf-8') as f:
     f.write(html)

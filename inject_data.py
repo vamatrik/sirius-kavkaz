@@ -1,10 +1,21 @@
-const routePoints = [[
+import json
+import re
+import urllib.parse
+
+# 1. We will read the existing script.js to extract coordinates and Yandex URLs.
+with open('script.js', 'r', encoding='utf-8') as f:
+    js = f.read()
+
+# Parse the existing routePoints
+points_text = re.search(r'const routePoints = \[(.*?)\];\n', js, flags=re.DOTALL).group(1)
+
+# We will manually craft the new enriched points here
+# We use detailed texts and multiple images where possible
+
+enriched_data = [
     {
         "id": "1",
-        "coords": [
-            43.413337,
-            39.93146
-        ],
+        "coords": [43.413337, 39.93146],
         "title": "1. Имеретинский морской вокзал",
         "yandexUrl": "https://yandex.ru/maps/-/CXU8mL7w",
         "category": "Транспорт / Отдых",
@@ -13,18 +24,12 @@ const routePoints = [[
         "importance": "Порт стал градообразующим объектом для курортного района Имеретинский, превратив индустриальную зону в элитный кластер отдыха.",
         "fact": "В порту регулярно проводятся международные парусные регаты, а часть причалов сделана плавучими (понтонными), чтобы гасить колебания воды.",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/1005628/2a000001892c348aa71914d331716792e2ab/L_height",
-                "caption": "Панорама Имеретинского порта"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/1005628/2a000001892c348aa71914d331716792e2ab/L_height", "caption": "Панорама Имеретинского порта"}
         ]
     },
     {
         "id": "2",
-        "coords": [
-            43.399239,
-            39.958595
-        ],
+        "coords": [43.399239, 39.958595],
         "title": "2. Олимпийский пляж",
         "yandexUrl": "https://yandex.ru/maps/-/CXU8uU4D",
         "category": "Отдых / Природа",
@@ -33,18 +38,12 @@ const routePoints = [[
         "importance": "Является главным местом пляжного отдыха на федеральной территории Сириус. Ежегодно получает награду «Голубой флаг» за чистоту.",
         "fact": "На этом пляже самая крупная галька в Сочи, так как она не зажата волнорезами и естественным образом обкатывается сильным прибоем.",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/18769949/2a0000019c4c1a35d071a4cdfc8c23fd89fc/L_height",
-                "caption": "Вид на Олимпийский пляж и море"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/18769949/2a0000019c4c1a35d071a4cdfc8c23fd89fc/L_height", "caption": "Вид на Олимпийский пляж и море"}
         ]
     },
     {
         "id": "3.1",
-        "coords": [
-            43.402006,
-            39.95589
-        ],
+        "coords": [43.402006, 39.95589],
         "title": "3.1 Стадион Фишт",
         "yandexUrl": "https://yandex.ru/maps/-/CXU8uRMW",
         "category": "Олимпийский парк / Архитектура",
@@ -53,18 +52,12 @@ const routePoints = [[
         "importance": "Главный спортивный символ современной России на юге страны.",
         "fact": "При проектировании стадиона учитывалась высокая сейсмичность региона, каркас может выдержать землетрясение до 9 баллов.",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/1246719/2a00000163996b11cf8fa6eb65efad6ba738/L_height",
-                "caption": "Стадион Фишт на закате"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/1246719/2a00000163996b11cf8fa6eb65efad6ba738/L_height", "caption": "Стадион Фишт на закате"}
         ]
     },
     {
         "id": "3.2",
-        "coords": [
-            43.405414,
-            39.954677
-        ],
+        "coords": [43.405414, 39.954677],
         "title": "3.2 Поющие фонтаны",
         "yandexUrl": "https://yandex.ru/maps/-/CXU8uZKO",
         "category": "Олимпийский парк / Искусство",
@@ -73,23 +66,14 @@ const routePoints = [[
         "importance": "Одно из самых посещаемых вечерних шоу в Сочи, собирающее тысячи зрителей ежедневно.",
         "fact": "В основание фонтана заложена капсула времени с посланием будущим поколениям россиян.",
         "images": [
-            {
-                "url": "user_photos/Поющие фонтаны поют.jpg",
-                "caption": "Фото снял один из участников проекта"
-            },
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/14337779/2a00000195ce583e32c5eea4884d772f4a95/L_height",
-                "caption": "Фонтаны крупным планом"
-            }
+            {"url": "user_photos/Поющие фонтаны поют.jpg", "caption": "Фото снял один из участников проекта"},
+            {"url": "https://avatars.mds.yandex.net/get-altay/14337779/2a00000195ce583e32c5eea4884d772f4a95/L_height", "caption": "Фонтаны крупным планом"}
         ],
         "videoUrl": "https://www.youtube.com/embed/dQw4w9WgXcQ"
     },
     {
         "id": "3.3",
-        "coords": [
-            43.407418,
-            39.958316
-        ],
+        "coords": [43.407418, 39.958316],
         "title": "3.3 ЛД Айсберг",
         "yandexUrl": "https://yandex.ru/maps/-/CXU8uKYZ",
         "category": "Олимпийский парк / Спорт",
@@ -98,18 +82,12 @@ const routePoints = [[
         "importance": "Ключевая ледовая арена, где Россия завоевала множество исторических медалей.",
         "fact": "Изначально конструкцию планировали сделать разборной для переноса в другой город, но в итоге решили оставить в Сириусе из-за огромной популярности.",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/813485/2a000001603403bc8148cf35a37122b90fdb/L_height",
-                "caption": "ЛД Айсберг в Олимпийском парке"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/813485/2a000001603403bc8148cf35a37122b90fdb/L_height", "caption": "ЛД Айсберг в Олимпийском парке"}
         ]
     },
     {
         "id": "3.4",
-        "coords": [
-            43.406147,
-            39.967654
-        ],
+        "coords": [43.406147, 39.967654],
         "title": "3.4 Музей Леонардо да Винчи",
         "yandexUrl": "https://yandex.ru/maps/-/CXU8uSP0",
         "category": "Олимпийский парк / Музеи",
@@ -118,18 +96,12 @@ const routePoints = [[
         "importance": "Отличная образовательная площадка для детей и взрослых, популяризирующая механику.",
         "fact": "Особенность музея — почти все экспонаты можно и нужно трогать руками, чтобы понять принцип их работы.",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/11421964/2a0000018cf241332914b3272b98bdf28da0/L_height",
-                "caption": "Экспонаты внутри музея Леонардо"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/11421964/2a0000018cf241332914b3272b98bdf28da0/L_height", "caption": "Экспонаты внутри музея Леонардо"}
         ]
     },
     {
         "id": "3.5",
-        "coords": [
-            43.406072,
-            39.968277
-        ],
+        "coords": [43.406072, 39.968277],
         "title": "3.5 Музей Теслы",
         "yandexUrl": "https://yandex.ru/maps/-/CXU8u8iV",
         "category": "Олимпийский парк / Наука",
@@ -138,18 +110,12 @@ const routePoints = [[
         "importance": "Уникальное шоу, объединяющее строгую физику, историю и яркий энтертейнмент.",
         "fact": "В клетке Фарадея абсолютно безопасно: заряд стекает по металлическому каркасу, не причиняя вреда человеку внутри.",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/5548986/2a0000018400c3d368869bb8c1bfe2998c7d/L_height",
-                "caption": "Шоу молний в музее Теслы"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/5548986/2a0000018400c3d368869bb8c1bfe2998c7d/L_height", "caption": "Шоу молний в музее Теслы"}
         ]
     },
     {
         "id": "3.6",
-        "coords": [
-            43.411603,
-            39.952936
-        ],
+        "coords": [43.411603, 39.952936],
         "title": "3.6 Концертный центр Сириус",
         "yandexUrl": "https://yandex.ru/maps/-/CXU8uXkG",
         "category": "Олимпийский парк / Культура",
@@ -158,18 +124,12 @@ const routePoints = [[
         "importance": "Формирует культурный облик нового наукограда Сириус.",
         "fact": "Огромные площади бывшего медиацентра позволили разместить здесь не только залы, но и передовые лаборатории генетики и IT.",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/10206101/2a0000018f6fbf422502c385cd17a6c2fcde/L_height",
-                "caption": "Здание концертного центра Сириус"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/10206101/2a0000018f6fbf422502c385cd17a6c2fcde/L_height", "caption": "Здание концертного центра Сириус"}
         ]
     },
     {
         "id": "3.7",
-        "coords": [
-            43.40702,
-            39.957642
-        ],
+        "coords": [43.40702, 39.957642],
         "title": "3.7 Сочи Автодром",
         "yandexUrl": "https://yandex.ru/maps/-/CXU85BzU",
         "category": "Олимпийский парк / Автоспорт",
@@ -178,18 +138,12 @@ const routePoints = [[
         "importance": "Единственная трасса Формулы-1 в России, шедевр инженерной мысли Германа Тильке.",
         "fact": "Длина трассы составляла 5848 метров, а болиды разгонялись здесь свыше 330 км/ч.",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/2901309/2a00000171dcd4a40d0e659e976db5dbbaeb/L_height",
-                "caption": "Гоночная трасса Автодрома"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/2901309/2a00000171dcd4a40d0e659e976db5dbbaeb/L_height", "caption": "Гоночная трасса Автодрома"}
         ]
     },
     {
         "id": "3.8",
-        "coords": [
-            43.404245,
-            39.965709
-        ],
+        "coords": [43.404245, 39.965709],
         "title": "3.8 Сочи Парк",
         "yandexUrl": "https://yandex.ru/maps/-/CXU85CZN",
         "category": "Развлечения",
@@ -198,18 +152,12 @@ const routePoints = [[
         "importance": "Один из лучших парков развлечений в Европе, привлекающий миллионы семей с детьми.",
         "fact": "Отель-замок «Богатырь», являющийся частью парка, выглядит как настоящий сказочный дворец и признан одной из самых необычных гостиниц России.",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/9829910/2a0000018af3bbd73d2a0d9595ca2a1293a9/L_height",
-                "caption": "Аттракционы Сочи Парка и замок Богатырь"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/9829910/2a0000018af3bbd73d2a0d9595ca2a1293a9/L_height", "caption": "Аттракционы Сочи Парка и замок Богатырь"}
         ]
     },
     {
         "id": "4",
-        "coords": [
-            43.398014,
-            39.972986
-        ],
+        "coords": [43.398014, 39.972986],
         "title": "4. Орнитологический парк",
         "yandexUrl": "https://yandex.ru/maps/org/prirodniy_ornitologicheskiy_park_v_imeretinskoy_nizmennosti/115591322258/",
         "category": "Природа / Фауна",
@@ -218,18 +166,12 @@ const routePoints = [[
         "importance": "Важнейший экологический компенсационный проект после строительства Олимпиады.",
         "fact": "Здесь зарегистрировано более 200 видов птиц, многие из которых занесены в Красную книгу России.",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/223006/2a0000015cb7ed258dc71f84d0b13cfcc7a1/L_height",
-                "caption": "Лебеди и водоемы орнитологического парка"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/223006/2a0000015cb7ed258dc71f84d0b13cfcc7a1/L_height", "caption": "Лебеди и водоемы орнитологического парка"}
         ]
     },
     {
         "id": "5",
-        "coords": [
-            43.402484,
-            39.97237
-        ],
+        "coords": [43.402484, 39.97237],
         "title": "5. Учебный центр Сириус и «Буран»",
         "yandexUrl": "https://yandex.ru/maps/-/CXU85QOt",
         "category": "Наука / Космос",
@@ -238,22 +180,13 @@ const routePoints = [[
         "importance": "Символ возрождения российской науки и работы с юными талантами. Буран символизирует масштаб инженерной мысли СССР.",
         "fact": "Корабль «Буран», установленный здесь, — это настоящий испытательный макет, который транспортировали в Сочи по морю и собирали по частям.",
         "images": [
-            {
-                "url": "user_photos/Буран снаружи.jpg",
-                "caption": "Фото снял один из участников проекта (Снаружи)"
-            },
-            {
-                "url": "user_photos/Буран изнутри.jpg",
-                "caption": "Фото снял один из участников проекта (Интерьер)"
-            }
+            {"url": "user_photos/Буран снаружи.jpg", "caption": "Фото снял один из участников проекта (Снаружи)"},
+            {"url": "user_photos/Буран изнутри.jpg", "caption": "Фото снял один из участников проекта (Интерьер)"}
         ]
     },
     {
         "id": "6",
-        "coords": [
-            43.419568,
-            39.931381
-        ],
+        "coords": [43.419568, 39.931381],
         "title": "6. Парк Южные культуры",
         "yandexUrl": "https://yandex.ru/maps/-/CXUcQTJe",
         "category": "Природа / Парк",
@@ -262,22 +195,13 @@ const routePoints = [[
         "importance": "Ценнейший ботанический памятник природы, второй по значимости после сочинского Дендрария.",
         "fact": "В парке есть система прудов, где цветут лотосы, кувшинки и плавают лебеди. Весной здесь пышно цветет сакура и магнолии.",
         "images": [
-            {
-                "url": "user_photos/Пруд в парке Южные Культуры.jpg",
-                "caption": "Фото снял один из участников проекта"
-            },
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/239474/2a0000015d059ec428668e23acb2be76bb46/L_height",
-                "caption": "Аллеи парка Южные культуры"
-            }
+            {"url": "user_photos/Пруд в парке Южные Культуры.jpg", "caption": "Фото снял один из участников проекта"},
+            {"url": "https://avatars.mds.yandex.net/get-altay/239474/2a0000015d059ec428668e23acb2be76bb46/L_height", "caption": "Аллеи парка Южные культуры"}
         ]
     },
     {
         "id": "7.1",
-        "coords": [
-            43.528407,
-            39.873212
-        ],
+        "coords": [43.528407, 39.873212],
         "title": "7.1 Тис-великан",
         "yandexUrl": "https://yandex.ru/maps/-/CXU8BDa2",
         "category": "Тисо-самшитовая роща",
@@ -286,22 +210,13 @@ const routePoints = [[
         "importance": "Демонстрирует мощь и долговечность колхидских лесов, переживших ледниковый период.",
         "fact": "Древесина тиса настолько плотная и тяжелая, что тонет в воде. Из-за красноватого оттенка тис называют «красным деревом».",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/10206101/2a0000018f6fbfb2671af1a967c1341c59bb/L_height",
-                "caption": "Мощные корни тиса"
-            },
-            {
-                "url": "user_photos/Карта Тисо-самшитовой рощи.jpg",
-                "caption": "Фото снял один из участников проекта (Карта маршрута)"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/10206101/2a0000018f6fbfb2671af1a967c1341c59bb/L_height", "caption": "Мощные корни тиса"},
+            {"url": "user_photos/Карта Тисо-самшитовой рощи.jpg", "caption": "Фото снял один из участников проекта (Карта маршрута)"}
         ]
     },
     {
         "id": "7.2",
-        "coords": [
-            43.52781,
-            39.876779
-        ],
+        "coords": [43.52781, 39.876779],
         "title": "7.2 Каменный лабиринт",
         "yandexUrl": "https://yandex.ru/maps/-/CXU8BDp9",
         "category": "Тисо-самшитовая роща",
@@ -310,18 +225,12 @@ const routePoints = [[
         "importance": "Популярнейшая фотозона и геологический памятник Кавказа.",
         "fact": "Температура в каменном лабиринте даже в самую сильную летнюю жару всегда на несколько градусов ниже, чем на открытой местности.",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/4741753/2a000001815349e5d4cb5fbaee2efb3bfda0/L_height",
-                "caption": "Тропа внутри каменного лабиринта"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/4741753/2a000001815349e5d4cb5fbaee2efb3bfda0/L_height", "caption": "Тропа внутри каменного лабиринта"}
         ]
     },
     {
         "id": "7.3",
-        "coords": [
-            43.538573,
-            39.877676
-        ],
+        "coords": [43.538573, 39.877676],
         "title": "7.3 Буковая поляна",
         "yandexUrl": "https://yandex.ru/maps/-/CXU8BS-Z",
         "category": "Тисо-самшитовая роща",
@@ -330,18 +239,12 @@ const routePoints = [[
         "importance": "Демонстрирует смену ярусов растительности в предгорьях Кавказа.",
         "fact": "Корневая система бука удерживает почву на крутых склонах гор, предотвращая оползни.",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/13461681/2a00000190f9040a9bc57bc0c0059d1e38c4/L_height",
-                "caption": "Буковый лес"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/13461681/2a00000190f9040a9bc57bc0c0059d1e38c4/L_height", "caption": "Буковый лес"}
         ]
     },
     {
         "id": "7.4",
-        "coords": [
-            43.540056,
-            39.880015
-        ],
+        "coords": [43.540056, 39.880015],
         "title": "7.4 Хостинская крепость",
         "yandexUrl": "https://yandex.com/maps/org/ruiny_vizantiyskoy_kreposti_viii_x_vv_/205246609730",
         "category": "Тисо-самшитовая роща",
@@ -350,18 +253,12 @@ const routePoints = [[
         "importance": "Свидетельство бурной средневековой истории Черноморского побережья, через которое проходили торговые пути.",
         "fact": "Стены крепости настолько органично вписались в лес, что деревья проросли прямо сквозь каменную кладку.",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/10812438/2a0000018c3f84bfb686579f37e3ad5380f0/L_height",
-                "caption": "Руины башни крепости"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/10812438/2a0000018c3f84bfb686579f37e3ad5380f0/L_height", "caption": "Руины башни крепости"}
         ]
     },
     {
         "id": "8",
-        "coords": [
-            43.544621,
-            39.87877
-        ],
+        "coords": [43.544621, 39.87877],
         "title": "8. Каньон Чёртовы ворота",
         "yandexUrl": "https://yandex.ru/maps/org/kanyon_chyortovy_vorota/149726264059/",
         "category": "Природа / Реки",
@@ -370,18 +267,12 @@ const routePoints = [[
         "importance": "Популярное место для купания местных жителей и туристов, баня на берегу каньона.",
         "fact": "Даже в августе вода в каньоне остается бодряще холодной (около 15-17 градусов), что спасает от летнего зноя.",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/10313837/2a0000018d451296c0975e523f3885a5a1ce/L_height",
-                "caption": "Скалы каньона Чертовы ворота"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/10313837/2a0000018d451296c0975e523f3885a5a1ce/L_height", "caption": "Скалы каньона Чертовы ворота"}
         ]
     },
     {
         "id": "9",
-        "coords": [
-            43.517264,
-            39.993583
-        ],
+        "coords": [43.517264, 39.993583],
         "title": "9. Племзавод «Адлер» (Форелевое хозяйство)",
         "yandexUrl": "https://yandex.ru/maps/org/plemzavod_adler/230101968831/",
         "category": "Производство / Гастрономия",
@@ -390,26 +281,14 @@ const routePoints = [[
         "importance": "Снабжает свежей рыбой и деликатесами лучшие рестораны Сочи.",
         "fact": "Здесь вывели уникальную породу форели — «Адлерская янтарная», которая отличается красивым золотистым цветом.",
         "images": [
-            {
-                "url": "user_photos/Форелевое хозяйство издалека.jpg",
-                "caption": "Фото снял один из участников проекта"
-            },
-            {
-                "url": "user_photos/Форель в форелевом хозяйстве.jpg",
-                "caption": "Фото снял один из участников проекта"
-            },
-            {
-                "url": "user_photos/Осетра в форелевом хозяйстве.jpg",
-                "caption": "Фото снял один из участников проекта"
-            }
+            {"url": "user_photos/Форелевое хозяйство издалека.jpg", "caption": "Фото снял один из участников проекта"},
+            {"url": "user_photos/Форель в форелевом хозяйстве.jpg", "caption": "Фото снял один из участников проекта"},
+            {"url": "user_photos/Осетра в форелевом хозяйстве.jpg", "caption": "Фото снял один из участников проекта"}
         ]
     },
     {
         "id": "10",
-        "coords": [
-            43.520777,
-            39.996083
-        ],
+        "coords": [43.520777, 39.996083],
         "title": "10. Ахштырская пещера",
         "yandexUrl": "https://yandex.ru/maps/org/akhshtyrskaya_peshchera/145496035348/",
         "category": "Природа / Археология",
@@ -418,22 +297,13 @@ const routePoints = [[
         "importance": "Уникальный археологический памятник Кавказа, доказывающий, что эти земли были заселены десятки тысяч лет назад.",
         "fact": "С площадки у входа в пещеру открывается захватывающий вид на ущелье реки Мзымта и мост Скайпарка.",
         "images": [
-            {
-                "url": "user_photos/Вход в Ахштырскую пещеру.jpg",
-                "caption": "Фото снял один из участников проекта"
-            },
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/4716261/2a00000182277979173ca801adde160bdb7d/L_height",
-                "caption": "Своды Ахштырской пещеры"
-            }
+            {"url": "user_photos/Вход в Ахштырскую пещеру.jpg", "caption": "Фото снял один из участников проекта"},
+            {"url": "https://avatars.mds.yandex.net/get-altay/4716261/2a00000182277979173ca801adde160bdb7d/L_height", "caption": "Своды Ахштырской пещеры"}
         ]
     },
     {
         "id": "11",
-        "coords": [
-            43.524942,
-            39.997254
-        ],
+        "coords": [43.524942, 39.997254],
         "title": "11. Скай Парк (Skypark)",
         "yandexUrl": "https://yandex.ru/maps/org/skaypark/1210593378/",
         "category": "Экстрим / Архитектура",
@@ -442,18 +312,12 @@ const routePoints = [[
         "importance": "Главный центр экстремального туризма на Черноморском побережье мирового уровня.",
         "fact": "Конструкция моста Скайбридж спроектирована так, чтобы выдержать землетрясение в 9 баллов и ураганный ветер.",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/15112342/2a00000194ef20b6759a5c781dda7d098022/L_height",
-                "caption": "Панорама моста Скайбридж"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/15112342/2a00000194ef20b6759a5c781dda7d098022/L_height", "caption": "Панорама моста Скайбридж"}
         ]
     },
     {
         "id": "12",
-        "coords": [
-            43.66848,
-            40.257731
-        ],
+        "coords": [43.66848, 40.257731],
         "title": "12. Курорт Красная Поляна",
         "yandexUrl": "https://yandex.ru/maps/org/kurort_krasnaya_polyana/1214311519/",
         "category": "Горы / Курорт",
@@ -462,18 +326,12 @@ const routePoints = [[
         "importance": "Один из ключевых горных курортов Сочи, предлагающий отличные трассы зимой и сотни километров экотроп летом.",
         "fact": "Архитектура нижней части курорта создана французским архитектором Пьером Динером в стиле неоклассицизма, поэтому её часто называют «сочинскими Карловыми Варами».",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/18748727/2a0000019db9f02b67007d4c6c3cebce75cf/L_height",
-                "caption": "Панорама высоты 960 метров"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/18748727/2a0000019db9f02b67007d4c6c3cebce75cf/L_height", "caption": "Панорама высоты 960 метров"}
         ]
     },
     {
         "id": "13.1",
-        "coords": [
-            43.672435,
-            40.296279
-        ],
+        "coords": [43.672435, 40.296279],
         "title": "13.1 Ратуша Роза Хутор",
         "yandexUrl": "https://yandex.ru/maps/-/CXU850zZ",
         "category": "Архитектура / Курорт",
@@ -482,18 +340,12 @@ const routePoints = [[
         "importance": "Эпицентр светской и туристической жизни Красной Поляны.",
         "fact": "Звон часов на башне Ратуши разносится по всей долине каждый час, а дизайн циферблата вдохновлен часами на вокзале Сочи.",
         "images": [
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/13970739/2a0000019199a98ce17675787a1c6a1c1404/L_height",
-                "caption": "Ратуша и набережная реки Мзымта"
-            }
+            {"url": "https://avatars.mds.yandex.net/get-altay/13970739/2a0000019199a98ce17675787a1c6a1c1404/L_height", "caption": "Ратуша и набережная реки Мзымта"}
         ]
     },
     {
         "id": "13.2",
-        "coords": [
-            43.624629,
-            40.310452
-        ],
+        "coords": [43.624629, 40.310452],
         "title": "13.2 Роза Пик",
         "yandexUrl": "https://yandex.ru/maps/org/roza_pik/158962977869/",
         "category": "Горы / Смотровая",
@@ -502,26 +354,14 @@ const routePoints = [[
         "importance": "Самая высокая точка массового туризма в Сочи, обязательная к посещению.",
         "fact": "Даже в разгар июльской жары на побережье, на Роза Пик температура может опускаться ниже +10 градусов, а в ложбинах лежит нерастаявший снег.",
         "images": [
-            {
-                "url": "user_photos/Вид с тропы курорта Роза Хутор.jpg",
-                "caption": "Фото снял один из участников проекта (Тропа в горах)"
-            },
-            {
-                "url": "user_photos/Вид с канатной дороги на реку Мзымта.jpg",
-                "caption": "Фото снял один из участников проекта (Канатная дорога)"
-            },
-            {
-                "url": "https://avatars.mds.yandex.net/get-altay/11622009/2a0000019073c9497e964506f53f0614a419/L_height",
-                "caption": "Смотровая Роза Пик"
-            }
+            {"url": "user_photos/Вид с тропы курорта Роза Хутор.jpg", "caption": "Фото снял один из участников проекта (Тропа в горах)"},
+            {"url": "user_photos/Вид с канатной дороги на реку Мзымта.jpg", "caption": "Фото снял один из участников проекта (Канатная дорога)"},
+            {"url": "https://avatars.mds.yandex.net/get-altay/11622009/2a0000019073c9497e964506f53f0614a419/L_height", "caption": "Смотровая Роза Пик"}
         ]
     },
     {
         "id": "14",
-        "coords": [
-            43.694211,
-            40.314328
-        ],
+        "coords": [43.694211, 40.314328],
         "title": "14. Газпром Поляна",
         "yandexUrl": "https://yandex.ru/maps/org/gorno_turisticheskiy_tsentr_gazprom/43313807333/",
         "category": "Горы / Курорт",
@@ -530,176 +370,15 @@ const routePoints = [[
         "importance": "Обеспечивает высочайший стандарт сервиса и обладает уникальным стадионом для беговых лыж.",
         "fact": "Канатная дорога типа 3S (на трех канатах) — самая длинная в мире канатная дорога с кольцевым движением, способная выдержать шквальный ветер.",
         "images": [
-            {
-                "url": "user_photos/Вид с курорта газпром (желтые цветы много).jpg",
-                "caption": "Фото снял один из участников проекта (Вид на цветы)"
-            },
-            {
-                "url": "user_photos/Вид с курорта Газпром (фиолетовые цветы).jpg",
-                "caption": "Фото снял один из участников проекта (Летние луга)"
-            },
-            {
-                "url": "user_photos/Кабинка канатной дороги Газпром (30 мест).jpg",
-                "caption": "Фото снял один из участников проекта (Легендарная канатка 3S)"
-            }
+            {"url": "user_photos/Вид с курорта газпром (желтые цветы много).jpg", "caption": "Фото снял один из участников проекта (Вид на цветы)"},
+            {"url": "user_photos/Вид с курорта Газпром (фиолетовые цветы).jpg", "caption": "Фото снял один из участников проекта (Летние луга)"},
+            {"url": "user_photos/Кабинка канатной дороги Газпром (30 мест).jpg", "caption": "Фото снял один из участников проекта (Легендарная канатка 3S)"}
         ]
     }
-]];
+]
 
-// Навигация
-ymaps.ready(initMap);
+js_out = js.replace(points_text, json.dumps(enriched_data, ensure_ascii=False, indent=4))
+# Note: we need to replace json keys to unquoted for proper JS if needed, but JSON format is totally valid JS.
 
-function initMap() {
-    window.mapObj = new ymaps.Map("map", {
-        center: [43.5500, 40.0500],
-        zoom: 10,
-        controls: ['zoomControl', 'typeSelector', 'fullscreenControl']
-    });
-
-    // Олимпийский парк
-    var olympicPolygon = new ymaps.Polygon([
-        [[43.40541400000001, 39.95288036943176], [43.40200599999999, 39.95409336943176], [43.401353324962514, 39.95433407228669], [43.40087552921666, 39.95499168471588], [43.40070064289388, 39.95589], [43.40087552921666, 39.956788315284115], [43.40337557586592, 39.96883731528412], [43.40385335189549, 39.969494927713306], [43.40773639373023, 39.97359592771331], [43.408389000000014, 39.973836630568236], [43.409041599238506, 39.97359592771331], [43.411214575825646, 39.97114792771331], [43.411692290028135, 39.970490315284124], [43.41186714462, 39.969592000000006], [43.411692290028135, 39.96869368471588], [43.40854834870058, 39.957417684715885], [43.40654438609684, 39.95377868471588], [43.40606663129091, 39.95312107228669]]
-    ], {
-        hintContent: 'Олимпийский парк'
-    }, {
-        fillColor: "#007bff33",
-        strokeColor: "#007bff",
-        strokeOpacity: 0.8,
-        strokeWidth: 2
-    });
-    window.mapObj.geoObjects.add(olympicPolygon);
-
-    // Тисо-самшитовая роща
-    var tisoPolygon = new ymaps.Polygon([
-        [[43.529717999999995, 39.8730992117897], [43.528903876920864, 39.873400090358366], [43.52830789049668, 39.874222105894845], [43.52808974285286, 39.875344999999996], [43.52830789049668, 39.87646789410515], [43.52891990480467, 39.87772989410515], [43.5295158851816, 39.87855190964163], [43.53033, 39.8788527882103], [43.54005600000001, 39.8822607882103], [43.54086997253583, 39.88195990964164], [43.54146583482121, 39.88113789410515], [43.54168393408258, 39.880015], [43.54146583482121, 39.878892105894856], [43.53998286949843, 39.87655310589486], [43.53938699255669, 39.87573109035837], [43.53857299999999, 39.875430211789705]]
-    ], {
-        hintContent: 'Тисо-самшитовая роща'
-    }, {
-        fillColor: "#28a74533",
-        strokeColor: "#28a745",
-        strokeOpacity: 0.8,
-        strokeWidth: 2
-    });
-    window.mapObj.geoObjects.add(tisoPolygon);
-
-    var mainRouteCoords = [
-        [43.413337, 39.93146], [43.399239, 39.958595], [43.405414, 39.954677], [43.410149, 39.96911], [43.394531, 39.991941], [43.414441, 39.949121], [43.419568, 39.931381], [43.529718, 39.875345], [43.540056, 39.880015], [43.544621, 39.87877], [43.517264, 39.993583], [43.520777, 39.996083], [43.524942, 39.997254], [43.66848, 40.257731], [43.673304, 40.182899], [43.672435, 40.296279], [43.624629, 40.310452], [43.694211, 40.314328]
-    ];
-
-    var mainPolyline = new ymaps.Polyline(mainRouteCoords, {}, {
-        strokeColor: "#17a2b8",
-        strokeWidth: 4,
-        strokeOpacity: 0.7,
-        strokeStyle: 'shortdash'
-    });
-    window.mapObj.geoObjects.add(mainPolyline);
-
-    routePoints.forEach((point) => {
-        let presetStyle = 'islands#blueIcon';
-        if(point.id.includes('.')) {
-            presetStyle = 'islands#lightBlueIcon';
-        }
-
-        var placemark = new ymaps.Placemark(point.coords, {
-            hintContent: point.title,
-            iconContent: point.id 
-        }, {
-            preset: presetStyle
-        });
-        
-        placemark.events.add('click', function () {
-            showPointInfo(point);
-        });
-
-        window.mapObj.geoObjects.add(placemark);
-    });
-
-    window.mapObj.setBounds(window.mapObj.geoObjects.getBounds(), {
-        checkZoomRange: true,
-        zoomMargin: 30
-    });
-}
-
-function showPointInfo(point) {
-    document.getElementById('p-category').innerText = point.category;
-    
-    if(point.yandexUrl) {
-        document.getElementById('p-title-link').innerText = point.title;
-        document.getElementById('p-title-link').href = point.yandexUrl;
-        document.getElementById('p-title-link').style.pointerEvents = "auto";
-        document.getElementById('p-title-link').style.textDecoration = "underline";
-    } else {
-        document.getElementById('p-title-link').innerText = point.title;
-        document.getElementById('p-title-link').removeAttribute('href');
-        document.getElementById('p-title-link').style.pointerEvents = "none";
-        document.getElementById('p-title-link').style.textDecoration = "none";
-    }
-    
-    document.getElementById('p-brief').innerText = point.brief;
-    document.getElementById('p-desc').innerText = point.desc;
-    document.getElementById('p-importance').innerText = point.importance;
-    document.getElementById('p-fact').innerText = point.fact;
-    
-    const topGallery = document.getElementById('p-gallery-top');
-    const bottomGallery = document.getElementById('p-gallery-bottom');
-    if(topGallery) topGallery.innerHTML = '';
-    if(bottomGallery) bottomGallery.innerHTML = '';
-    
-    let allImages = [];
-    if(point.images && point.images.length > 0) {
-        allImages = point.images;
-    } else if (point.img) {
-        allImages.push({url: point.img, caption: ''});
-    }
-
-    const midPoint = Math.ceil(allImages.length / 2);
-    
-    allImages.forEach((imgObj, index) => {
-        let capHTML = imgObj.caption ? `<div class="masonry-caption">${imgObj.caption}</div>` : '';
-        let itemHTML = `<div class="masonry-item"><img src="${imgObj.url}" alt="">${capHTML}</div>`;
-        if(index < midPoint) {
-            if(topGallery) topGallery.innerHTML += itemHTML;
-        } else {
-            if(bottomGallery) bottomGallery.innerHTML += itemHTML;
-        }
-    });
-
-    const videoContainer = document.getElementById('p-video-container');
-    if(videoContainer) {
-        if(point.videoUrl) {
-            videoContainer.innerHTML = `<iframe width="100%" height="315" src="${point.videoUrl}" frameborder="0" allowfullscreen></iframe>`;
-            videoContainer.style.display = 'block';
-        } else {
-            videoContainer.innerHTML = '';
-            videoContainer.style.display = 'none';
-        }
-    }
-
-    document.querySelector('.info-content').style.display = 'block';
-    setTimeout(() => { document.querySelector('.info-panel').scrollIntoView({behavior: 'smooth', block: 'center'}); }, 100);
-}
-
-function switchGuide(event, targetId) {
-    document.querySelectorAll('#guide-nav li').forEach(li => {
-        li.classList.remove('active');
-    });
-    if(event && event.currentTarget) event.currentTarget.classList.add('active');
-    
-    document.querySelectorAll('.guide-pane').forEach(pane => {
-        pane.classList.remove('active');
-    });
-    document.getElementById(targetId).classList.add('active');
-
-    const guideBg = {
-        'guide-brief': 'https://avatars.mds.yandex.net/get-altay/18748727/2a0000019db9f02b67007d4c6c3cebce75cf/L_height',
-        'guide-intro': 'https://avatars.mds.yandex.net/get-altay/18769949/2a0000019c4c1a35d071a4cdfc8c23fd89fc/L_height',
-        'guide-geo': 'https://avatars.mds.yandex.net/get-altay/19816667/2a0000019ecafbf514f5e2c7a7a6f9617b62/L_height',
-        'guide-eco': 'https://avatars.mds.yandex.net/get-altay/2094876/2a0000016d3f3bc2b1494e4c1a89184a9420/L_height',
-        'guide-flora': 'https://avatars.mds.yandex.net/get-altay/239474/2a0000015d059ec428668e23acb2be76bb46/L_height',
-        'guide-pop': 'user_photos/Буран снаружи.jpg'
-    };
-    
-    if(guideBg[targetId]) {
-        document.getElementById('guide').style.backgroundImage = `linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9)), url("${guideBg[targetId]}")`;
-    }
-}
+with open('script.js', 'w', encoding='utf-8') as f:
+    f.write(js_out)
