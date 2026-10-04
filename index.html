@@ -7,7 +7,36 @@
     <link rel="stylesheet" href="style.css">
     <!-- Подключаем Yandex Maps API -->
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
-</head>
+<style>
+.nav-arrow {
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 3rem;
+    color: rgba(255,255,255,0.7);
+    cursor: pointer;
+    z-index: 1000;
+    user-select: none;
+    transition: 0.3s;
+    background: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.nav-arrow:hover { color: #fff; background: rgba(0,0,0,0.8); }
+.nav-arrow.left { left: 20px; }
+.nav-arrow.right { right: 20px; }
+
+@media (max-width: 1024px) {
+    .nav-arrow {
+        position: absolute;
+        top: 150px;
+    }
+}
+</style></head>
 <body>
     <nav class="navbar">
         <div class="logo">🧭 Сириус и Сочи</div>
@@ -86,6 +115,10 @@
                     <p>Нажмите на любой маркер, чтобы узнать подробности.</p>
                 </div>
                 <div class="info-content" id="info-content" style="display: none;">
+
+    <div class="nav-arrow left" id="nav-prev" onclick="navPoint(-1)" style="display:none;">&#9664;</div>
+    <div class="nav-arrow right" id="nav-next" onclick="navPoint(1)" style="display:none;">&#9654;</div>
+    
                     <div id="p-gallery-top" class="masonry-gallery"></div>
                     <div id="p-video-container" style="display: none; margin-bottom: 20px;"></div>
                     <div class="info-text">

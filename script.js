@@ -14,7 +14,7 @@ const routePoints = [
         "fact": "В порту регулярно проводятся международные парусные регаты, а часть причалов сделана плавучими (понтонными), чтобы гасить колебания воды.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1544644181-1484b3f8c8b4?w=800",
+                "url": "https://avatars.mds.yandex.net/get-altay/1005628/2a000001892c348aa71914d331716792e2ab/L_height",
                 "caption": "Панорама Имеретинского порта"
             }
         ]
@@ -34,7 +34,7 @@ const routePoints = [
         "fact": "На этом пляже самая крупная галька в Сочи, так как она не зажата волнорезами и естественным образом обкатывается сильным прибоем.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800",
+                "url": "https://avatars.mds.yandex.net/get-altay/18769949/2a0000019c4c1a35d071a4cdfc8c23fd89fc/L_height",
                 "caption": "Вид на Олимпийский пляж и море"
             }
         ]
@@ -54,7 +54,7 @@ const routePoints = [
         "fact": "При проектировании стадиона учитывалась высокая сейсмичность региона, каркас может выдержать землетрясение до 9 баллов.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=800",
+                "url": "https://avatars.mds.yandex.net/get-altay/1246719/2a00000163996b11cf8fa6eb65efad6ba738/L_height",
                 "caption": "Стадион Фишт на закате"
             }
         ]
@@ -76,6 +76,10 @@ const routePoints = [
             {
                 "url": "user_photos/Поющие фонтаны поют.jpg",
                 "caption": "Фото снял один из участников проекта"
+            },
+            {
+                "url": "https://avatars.mds.yandex.net/get-altay/14337779/2a00000195ce583e32c5eea4884d772f4a95/L_height",
+                "caption": "Фонтаны крупным планом"
             }
         ],
         "videoUrl": "https://rutube.ru/play/embed/79d9d7f3261c1a056ec2e8f32677828a"
@@ -95,7 +99,7 @@ const routePoints = [
         "fact": "Изначально конструкцию планировали сделать разборной для переноса в другой город, но в итоге решили оставить в Сириусе из-за огромной популярности.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1517032128771-42e7d7a361e6?w=800",
+                "url": "https://avatars.mds.yandex.net/get-altay/813485/2a000001603403bc8148cf35a37122b90fdb/L_height",
                 "caption": "ЛД Айсберг в Олимпийском парке"
             }
         ]
@@ -115,7 +119,7 @@ const routePoints = [
         "fact": "Особенность музея — почти все экспонаты можно и нужно трогать руками, чтобы понять принцип их работы.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1574347714885-3e288e228d44?w=800",
+                "url": "https://avatars.mds.yandex.net/get-altay/11421964/2a0000018cf241332914b3272b98bdf28da0/L_height",
                 "caption": "Экспонаты внутри музея Леонардо"
             }
         ]
@@ -135,7 +139,7 @@ const routePoints = [
         "fact": "В клетке Фарадея абсолютно безопасно: заряд стекает по металлическому каркасу, не причиняя вреда человеку внутри.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1502480665972-e1ab8e5f8f53?w=800",
+                "url": "https://avatars.mds.yandex.net/get-altay/5548986/2a0000018400c3d368869bb8c1bfe2998c7d/L_height",
                 "caption": "Шоу молний в музее Теслы"
             }
         ],
@@ -156,8 +160,8 @@ const routePoints = [
         "fact": "Огромные площади бывшего медиацентра позволили разместить здесь не только залы, но и передовые лаборатории генетики и IT.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1518398046578-8cca57782e17?w=800",
-                "caption": "Концертный центр"
+                "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Sirius_Concert_Center_Construction.jpg?width=800",
+                "caption": "Здание концертного центра Сириус"
             }
         ]
     },
@@ -176,8 +180,8 @@ const routePoints = [
         "fact": "Длина трассы составляла 5848 метров, а болиды разгонялись здесь свыше 330 км/ч.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1541443131876-44b03de101c5?w=800&q=80",
-                "caption": "Сочи Автодром"
+                "url": "https://avatars.mds.yandex.net/get-altay/14299948/2a00000192e4de4b497cb11de1e0fb2eecf1/L_height",
+                "caption": "Трасса Сочи Автодрома"
             }
         ]
     },
@@ -196,8 +200,8 @@ const routePoints = [
         "fact": "Здесь находится 1500-сильный Dodge Viper для дрэг-рейсинга, который способен разгоняться до 100 км/ч чуть более чем за 1 секунду.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1583121274602-3e2820c69888?w=800&q=80",
-                "caption": "Музей Ника Панули"
+                "url": "https://avatars.mds.yandex.net/get-altay/10206101/2a0000018f6f69046c3b6f00e9bc5a64353d/L_height",
+                "caption": "Болиды и суперкары в музее Панули"
             }
         ]
     },
@@ -216,16 +220,16 @@ const routePoints = [
         "fact": "Отель-замок «Богатырь», являющийся частью парка, выглядит как настоящий сказочный дворец и признан одной из самых необычных гостиниц России.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?w=800",
-                "caption": "Аттракционы Сочи Парка"
+                "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Sochipark_in_the_evening.jpg?width=800",
+                "caption": "Аттракционы Сочи Парка и замок Богатырь"
             }
         ]
     },
     {
         "id": "4",
         "coords": [
-            43.394531,
-            39.991941
+            43.398014,
+            39.972986
         ],
         "title": "4. Орнитологический парк",
         "yandexUrl": "https://yandex.ru/maps/org/prirodniy_ornitologicheskiy_park_v_imeretinskoy_nizmennosti/115591322258/",
@@ -236,16 +240,16 @@ const routePoints = [
         "fact": "Здесь зарегистрировано более 200 видов птиц, многие из которых занесены в Красную книгу России.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1517849845537-4d257902454a?w=800",
-                "caption": "Лебеди в орнитологическом парке"
+                "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Drava_swan.jpg?width=800",
+                "caption": "Лебеди и водоемы орнитологического парка"
             }
         ]
     },
     {
         "id": "5",
         "coords": [
-            43.414441,
-            39.949121
+            43.402484,
+            39.97237
         ],
         "title": "5. Учебный центр Сириус и «Буран»",
         "yandexUrl": "https://yandex.ru/maps/-/CXU85QOt",
@@ -284,7 +288,7 @@ const routePoints = [
                 "caption": "Фото снял один из участников проекта"
             },
             {
-                "url": "https://images.unsplash.com/photo-1498855926480-d98e83099315?w=800",
+                "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Alley_in_park.jpg?width=800",
                 "caption": "Аллея парка"
             }
         ]
@@ -292,8 +296,8 @@ const routePoints = [
     {
         "id": "7.1",
         "coords": [
-            43.529718,
-            39.875345
+            43.528407,
+            39.873212
         ],
         "title": "7.1 Тис-великан",
         "yandexUrl": "https://yandex.ru/maps/-/CXU8BDa2",
@@ -304,8 +308,8 @@ const routePoints = [
         "fact": "Древесина тиса настолько плотная и тяжелая, что тонет в воде. Из-за красноватого оттенка тис называют «красным деревом».",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800",
-                "caption": "Тис-великан"
+                "url": "https://avatars.mds.yandex.net/get-altay/10206101/2a0000018f6fbfb2671af1a967c1341c59bb/L_height",
+                "caption": "Мощные корни тиса"
             },
             {
                 "url": "user_photos/Карта Тисо-самшитовой рощи.jpg",
@@ -316,8 +320,8 @@ const routePoints = [
     {
         "id": "7.2",
         "coords": [
-            43.53033,
-            39.876607
+            43.52781,
+            39.876779
         ],
         "title": "7.2 Каменный лабиринт",
         "yandexUrl": "https://yandex.ru/maps/-/CXU8BDp9",
@@ -328,8 +332,8 @@ const routePoints = [
         "fact": "Температура в каменном лабиринте даже в самую сильную летнюю жару всегда на несколько градусов ниже, чем на открытой местности.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800",
-                "caption": "Каменный лабиринт"
+                "url": "https://avatars.mds.yandex.net/get-altay/4741753/2a000001815349e5d4cb5fbaee2efb3bfda0/L_height",
+                "caption": "Тропа внутри каменного лабиринта"
             }
         ]
     },
@@ -348,8 +352,8 @@ const routePoints = [
         "fact": "Корневая система бука удерживает почву на крутых склонах гор, предотвращая оползни.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1448375240586-882707db888b?w=800",
-                "caption": "Буковая поляна"
+                "url": "https://avatars.mds.yandex.net/get-altay/13461681/2a00000190f9040a9bc57bc0c0059d1e38c4/L_height",
+                "caption": "Буковый лес"
             }
         ]
     },
@@ -368,8 +372,8 @@ const routePoints = [
         "fact": "Стены крепости настолько органично вписались в лес, что деревья проросли прямо сквозь каменную кладку.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=800",
-                "caption": "Хостинская крепость"
+                "url": "https://avatars.mds.yandex.net/get-altay/10812438/2a0000018c3f84bfb686579f37e3ad5380f0/L_height",
+                "caption": "Руины башни крепости"
             }
         ]
     },
@@ -388,8 +392,8 @@ const routePoints = [
         "fact": "Даже в августе вода в каньоне остается бодряще холодной (около 15-17 градусов), что спасает от летнего зноя.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1433086966358-54859d0ed716?w=800",
-                "caption": "Каньон Чертовы ворота"
+                "url": "https://avatars.mds.yandex.net/get-altay/10313837/2a0000018d451296c0975e523f3885a5a1ce/L_height",
+                "caption": "Скалы каньона Чертовы ворота"
             }
         ]
     },
@@ -438,6 +442,10 @@ const routePoints = [
             {
                 "url": "user_photos/Вход в Ахштырскую пещеру.jpg",
                 "caption": "Фото снял один из участников проекта"
+            },
+            {
+                "url": "https://avatars.mds.yandex.net/get-altay/4716261/2a00000182277979173ca801adde160bdb7d/L_height",
+                "caption": "Своды Ахштырской пещеры"
             }
         ]
     },
@@ -456,7 +464,7 @@ const routePoints = [
         "fact": "Конструкция моста Скайбридж спроектирована так, чтобы выдержать землетрясение в 9 баллов и ураганный ветер.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1503342394128-c104d54dba01?w=800",
+                "url": "https://avatars.mds.yandex.net/get-altay/15112342/2a00000194ef20b6759a5c781dda7d098022/L_height",
                 "caption": "Аттракцион в скай парке"
             }
         ]
@@ -476,7 +484,7 @@ const routePoints = [
         "fact": "Здесь установлен памятный камень Юрию Ефремову с выбитыми на нём строками из его стихов о Кавказе.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=800",
+                "url": "https://avatars.mds.yandex.net/get-altay/18748727/2a0000019db9f02b67007d4c6c3cebce75cf/L_height",
                 "caption": "Вид со смотровой площадки"
             }
         ]
@@ -496,7 +504,7 @@ const routePoints = [
         "fact": "Архитектура нижней части курорта создана французским архитектором Пьером Динером в стиле неоклассицизма, поэтому её часто называют «сочинскими Карловыми Варами».",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1551524164-687a55dd1126?w=800",
+                "url": "https://avatars.mds.yandex.net/get-altay/18748727/2a0000019db9f02b67007d4c6c3cebce75cf/L_height",
                 "caption": "Панорама высоты 960 метров"
             }
         ]
@@ -516,7 +524,7 @@ const routePoints = [
         "fact": "Звон часов на башне Ратуши разносится по всей долине каждый час, а дизайн циферблата вдохновлен часами на вокзале Сочи.",
         "images": [
             {
-                "url": "https://images.unsplash.com/photo-1520114878144-6123749968dd?w=800",
+                "url": "https://avatars.mds.yandex.net/get-altay/11831818/2a0000018f6c5bbfa7726b2b52b2bc3f4129/L_height",
                 "caption": "Ратуша"
             }
         ]
@@ -544,8 +552,8 @@ const routePoints = [
                 "caption": "Фото снял один из участников проекта (Канатная дорога)"
             },
             {
-                "url": "https://images.unsplash.com/photo-1518779578993-ec3579fee39f?w=800",
-                "caption": "Высокогорный ресторан и смотровая"
+                "url": "https://avatars.mds.yandex.net/get-altay/5483549/2a00000183b16954be4071869e5d4c82c23f/L_height",
+                "caption": "Смотровая площадка"
             }
         ]
     },
@@ -616,7 +624,7 @@ function initMap() {
     window.mapObj.geoObjects.add(tisoPolygon);
 
     var mainRouteCoords = [
-        [43.413337, 39.93146], [43.399239, 39.958595], [43.405414, 39.954677], [43.410149, 39.96911], [43.394531, 39.991941], [43.414441, 39.949121], [43.419568, 39.931381], [43.529718, 39.875345], [43.540056, 39.880015], [43.544621, 39.87877], [43.517264, 39.993583], [43.520777, 39.996083], [43.524942, 39.997254], [43.66848, 40.257731], [43.673304, 40.182899], [43.672435, 40.296279], [43.624629, 40.310452], [43.694211, 40.314328]
+        [43.413337, 39.93146], [43.399239, 39.958595], [43.405414, 39.954677], [43.410149, 39.96911], [43.394531, 39.991941], [43.414441, 39.949121], [43.417407, 39.935737], [43.529718, 39.875345], [43.540056, 39.880015], [43.544621, 39.87877], [43.517264, 39.993583], [43.520777, 39.996083], [43.524942, 39.997254], [43.66848, 40.257731], [43.673304, 40.182899], [43.672435, 40.296279], [43.624629, 40.310452], [43.694211, 40.314328]
     ];
 
     var mainPolyline = new ymaps.Polyline(mainRouteCoords, {}, {
@@ -642,6 +650,8 @@ function initMap() {
         
         placemark.events.add('click', function () {
             showPointInfo(point);
+        currentPointIndex = routePoints.findIndex(p => p.id === point.id);
+        updateNavArrows();
         });
 
         window.mapObj.geoObjects.add(placemark);
@@ -736,4 +746,27 @@ function switchGuide(event, targetId) {
     if(guideBg[targetId]) {
         document.getElementById('guide').style.backgroundImage = `linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9)), url("${guideBg[targetId]}")`;
     }
+}
+
+
+let currentPointIndex = -1;
+
+function navPoint(delta) {
+    if (currentPointIndex === -1) return;
+    let newIndex = currentPointIndex + delta;
+    if (newIndex >= 0 && newIndex < routePoints.length) {
+        // Trigger click on the corresponding placemark
+        // But since we can't easily trigger click on map placemark by index without keeping an array of placemarks,
+        // we can just call showPointInfo and pan the map manually.
+        let pt = routePoints[newIndex];
+        window.mapObj.panTo(pt.coords, {flying: true, duration: 500});
+        showPointInfo(pt);
+        currentPointIndex = newIndex;
+        updateNavArrows();
+    }
+}
+
+function updateNavArrows() {
+    document.getElementById('nav-prev').style.display = currentPointIndex > 0 ? 'flex' : 'none';
+    document.getElementById('nav-next').style.display = currentPointIndex < routePoints.length - 1 && currentPointIndex !== -1 ? 'flex' : 'none';
 }
