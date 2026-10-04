@@ -8,40 +8,33 @@
     <!-- Подключаем Yandex Maps API -->
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
 <style>
+
 .nav-arrow {
     position: fixed;
     top: 50%;
     transform: translateY(-50%) scaleX(0.4);
     font-size: 6rem;
-    color: rgba(255,255,255,0.7);
-    cursor: pointer;
-    z-index: 1000;
-    user-select: none;
-    transition: 0.3s;
+    color: white;
+    background: rgba(0,0,0,0.4);
+    width: 80px;
+    height: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
+    border-radius: 10px;
+    cursor: pointer;
+    z-index: 9999;
+    user-select: none;
+    transition: 0.3s;
 }
-.nav-arrow:hover { color: #fff; transform: translateY(-50%) scaleX(0.45); text-shadow: 0 0 10px rgba(255,255,255,0.5); }
-.nav-arrow.left { left: 30px; }
-.nav-arrow.right { right: 30px; }
+.nav-arrow:hover { background: rgba(0,0,0,0.8); color: #fff; transform: translateY(-50%) scaleX(0.45); }
+.nav-arrow.left { left: 20px; }
+.nav-arrow.right { right: 20px; }
 
-@media (max-width: 1024px) {
-    .nav-arrow {
-    position: fixed;
-    top: 50%;
-    transform: translateY(-50%) scaleX(0.4);
-    font-size: 6rem;
-    color: rgba(255,255,255,0.7);
-    cursor: pointer;
-    z-index: 1000;
-    user-select: none;
-    transition: 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-}
+
+
+
+
 </style></head>
 <body>
     <nav class="navbar">
@@ -66,7 +59,7 @@
 
     <!-- ПУТЕВОДИТЕЛЬ -->
     <section id="guide" class="scroll-section">
-<h2>Путеводитель по региону</h2>
+<h2>Путеводитель: Жемчужина Юга России</h2>
 <div class="guide-container">
     <div class="guide-sidebar">
         <ul id="guide-nav">
