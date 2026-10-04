@@ -1,7 +1,8 @@
 import re
 import json
 
-with open('old_script.js', 'r', encoding='utf-16') as f:
+# Read the pristine script.js (utf-8)
+with open('script.js', 'r', encoding='utf-8') as f:
     js = f.read()
 
 # 1. Shift numbers FIRST
@@ -58,28 +59,33 @@ park_obj = '''    {
 js = re.sub(r'(id:\s*"5",.*?\},)', r'\1\n' + park_obj, js, flags=re.DOTALL)
 
 # 3. Add scroll animation
-js = re.sub(r'(document\.querySelector\(\'.info-content\'\)\.style\.display = \'block\';)', r'\1\n    setTimeout(() => { document.querySelector(\'.info-panel\').scrollIntoView({behavior: \'smooth\', block: \'center\'}); }, 100);', js)
+# Ensure we only replace what needs to be replaced, avoiding backslash hell.
+scroll_js = r"document.querySelector('.info-content').style.display = 'block';\n    setTimeout(() => { document.querySelector('.info-panel').scrollIntoView({behavior: 'smooth', block: 'center'}); }, 100);"
+js = js.replace("document.querySelector('.info-content').style.display = 'block';", scroll_js)
 
 # 4. Insert precise polygons
-# Get precise polygons from current script.js
-with open('script.js', 'r', encoding='utf-8') as f:
-    curr_js = f.read()
-
-oly_poly = re.search(r'var olympicPolygon = new ymaps\.Polygon\(\[\s*(\[\[.*?\]\])\s*\]', curr_js, flags=re.DOTALL).group(1)
-tiso_poly = re.search(r'var tisoPolygon = new ymaps\.Polygon\(\[\s*(\[\[.*?\]\])\s*\]', curr_js, flags=re.DOTALL).group(1)
+# I will use the PRECISE coordinates I fetched from links_data_fixed previously, which I'll inject manually here to avoid needing to parse the broken script.js again.
+oly_poly = "[[43.40541400000001, 39.95288036943176], [43.40200599999999, 39.95409336943176], [43.401353324962514, 39.95433407228669], [43.40087552921666, 39.95499168471588], [43.40070064289388, 39.95589], [43.40087552921666, 39.956788315284115], [43.40337557586592, 39.96883731528412], [43.40385335189549, 39.969494927713306], [43.40773639373023, 39.97359592771331], [43.408389000000014, 39.973836630568236], [43.409041599238506, 39.97359592771331], [43.411214575825646, 39.97114792771331], [43.411692290028135, 39.970490315284124], [43.41186714462, 39.969592000000006], [43.411692290028135, 39.96869368471588], [43.40854834870058, 39.957417684715885], [43.40654438609684, 39.95377868471588], [43.40606663129091, 39.95312107228669]]"
+tiso_poly = "[[43.529717999999995, 39.8730992117897], [43.528903876920864, 39.873400090358366], [43.52830789049668, 39.874222105894845], [43.52808974285286, 39.875344999999996], [43.52830789049668, 39.87646789410515], [43.52891990480467, 39.87772989410515], [43.5295158851816, 39.87855190964163], [43.53033, 39.8788527882103], [43.54005600000001, 39.8822607882103], [43.54086997253583, 39.88195990964164], [43.54146583482121, 39.88113789410515], [43.54168393408258, 39.880015], [43.54146583482121, 39.878892105894856], [43.53998286949843, 39.87655310589486], [43.53938699255669, 39.87573109035837], [43.53857299999999, 39.875430211789705]]"
 
 js = re.sub(r'var olympicPolygon = new ymaps\.Polygon\(\[\s*\[\[.*?\]\]\s*\]', f'var olympicPolygon = new ymaps.Polygon([\n        {oly_poly}\n    ]', js, flags=re.DOTALL)
 js = re.sub(r'var tisoPolygon = new ymaps\.Polygon\(\[\s*\[\[.*?\]\]\s*\]', f'var tisoPolygon = new ymaps.Polygon([\n        {tiso_poly}\n    ]', js, flags=re.DOTALL)
 
 # 5. Fix mainRouteCoords
-# The old one had:
-#     var mainRouteCoords = [
-#        [43.413337, 39.93146], ...
-#     ];
-# We need to insert park_coords [43.419568, 39.931381] after [43.414441, 39.949121] (which is point 5 in old coords, wait, old coords had [43.413, 39.93] for point 1, what was point 5?)
-# Let's check old_script.js for point 5 coords!
-# 5 is Учебный центр Сириус. Its coords: [43.402484, 39.97237]
+# The old one had: [43.402484, 39.97237] for Point 5.
+# We append Park coords [43.419568, 39.931381] after it!
 js = js.replace('[43.402484, 39.97237], [43.529718, 39.875345]', '[43.402484, 39.97237], [43.419568, 39.931381], [43.529718, 39.875345]')
+
+# Make sure guide backgrounds don't have !important in js either, but this is script.js, guide backgrounds are in style.css which I already fixed in previous commits!
+# Wait! In the pristine script.js from ca67836, showPage() and switchGuide() were STILL set up for SPA (Single Page Application)!
+# Ah! I need to apply the "One-page scroll layout" changes to `switchGuide`!
+# Because the pristine script.js has `showPage` and `switchGuide(targetId)`!
+
+# Fix switchGuide for event
+js = js.replace('function switchGuide(targetId) {', 'function switchGuide(event, targetId) {')
+js = js.replace('event.target.classList.add(\'active\');', 'if(event && event.currentTarget) event.currentTarget.classList.add(\'active\');')
+# Remove showPage
+js = re.sub(r'function showPage\(pageId\) \{.*?\}\s*ymaps\.ready\(initMap\);', 'ymaps.ready(initMap);', js, flags=re.DOTALL)
 
 with open('script.js', 'w', encoding='utf-8') as f:
     f.write(js)
