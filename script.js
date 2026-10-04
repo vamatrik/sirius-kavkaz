@@ -675,6 +675,7 @@ function showPointInfo(point) {
         }
     }
 
+    document.getElementById('empty-state').style.display = 'none';
     document.querySelector('.info-content').style.display = 'block';
     setTimeout(() => { document.querySelector('.info-panel').scrollIntoView({behavior: 'smooth', block: 'center'}); }, 100);
 }
