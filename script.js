@@ -1,4 +1,4 @@
-const routePoints = [[
+const routePoints = [
     {
         "id": "1",
         "coords": [
@@ -544,7 +544,7 @@ const routePoints = [[
             }
         ]
     }
-]];
+];
 
 // Навигация
 ymaps.ready(initMap);
