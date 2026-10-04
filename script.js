@@ -147,8 +147,8 @@ const routePoints = [
     {
         "id": "3.6",
         "coords": [
-            43.411603,
-            39.952936
+            43.408389,
+            39.97204
         ],
         "title": "3.6 Концертный центр Сириус",
         "yandexUrl": "https://yandex.ru/maps/-/CXU8uXkG",
@@ -167,8 +167,8 @@ const routePoints = [
     {
         "id": "3.7",
         "coords": [
-            43.40702,
-            39.957642
+            43.410149,
+            39.96911
         ],
         "title": "3.7 Сочи Автодром",
         "yandexUrl": "https://yandex.ru/maps/-/CXU85BzU",
@@ -187,8 +187,8 @@ const routePoints = [
     {
         "id": "3.8",
         "coords": [
-            43.404245,
-            39.965709
+            43.404506,
+            39.967939
         ],
         "title": "3.8 Сочи Парк",
         "yandexUrl": "https://yandex.ru/maps/-/CXU85CZN",
