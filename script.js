@@ -536,8 +536,8 @@ const routePoints = [
     {
         "id": "12",
         "coords": [
-            43.673304,
-            40.182899
+            43.66848,
+            40.257731
         ],
         "title": "12. Курорт Красная Поляна",
         "yandexUrl": "https://yandex.ru/maps/org/kurort_krasnaya_polyana/1214311519/",
@@ -560,8 +560,8 @@ const routePoints = [
     {
         "id": "13",
         "coords": [
-            43.66848,
-            40.257731
+            43.673304,
+            40.182899
         ],
         "title": "13. Кругозор Ефремова",
         "yandexUrl": "https://yandex.ru/maps/-/CXU8E0M9",
