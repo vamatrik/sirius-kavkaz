@@ -930,13 +930,12 @@ function switchGuide(event, targetId) {
     });
     document.getElementById(targetId).classList.add('active');
 
-    const guideBg = {
-        'guide-brief': 'https://avatars.mds.yandex.net/get-altay/18748727/2a0000019db9f02b67007d4c6c3cebce75cf/L_height',
-        'guide-intro': 'https://avatars.mds.yandex.net/get-altay/18769949/2a0000019c4c1a35d071a4cdfc8c23fd89fc/L_height',
-        'guide-geo': 'https://avatars.mds.yandex.net/get-altay/19816667/2a0000019ecafbf514f5e2c7a7a6f9617b62/L_height',
-        'guide-eco': 'https://avatars.mds.yandex.net/get-altay/2094876/2a0000016d3f3bc2b1494e4c1a89184a9420/L_height',
-        'guide-flora': 'https://avatars.mds.yandex.net/get-altay/239474/2a0000015d059ec428668e23acb2be76bb46/L_height',
-        'guide-pop': 'user_photos/Буран снаружи.jpg'
+        const guideBg = {
+        'guide-overview': 'images/Черное море побережье фон - вкладка 1.jpg',
+        'guide-geo': 'images/Кавказский заповедник на фон - вкладка 2.jpg',
+        'guide-econ': 'images/Задний фон Сириус - вкладка 3.jpeg',
+        'guide-pop': 'images/Храм на задний фон - вкладка 4.jpg',
+        'guide-cult': 'images/Табличка Ефремов задний план - 5 вкладка.jpg'
     };
     
     if(guideBg[targetId]) {

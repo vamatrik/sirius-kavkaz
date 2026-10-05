@@ -460,7 +460,7 @@ html {
 
 /* GUIDE SECTION */
 #guide {
-    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9)), url('https://avatars.mds.yandex.net/get-altay/18769949/2a0000019c4c1a35d071a4cdfc8c23fd89fc/L_height');
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9)), url('images/Черное море побережье фон - вкладка 1.jpg');
     background-size: cover !important;
     background-position: center !important;
     transition: background-image 0.5s ease;
