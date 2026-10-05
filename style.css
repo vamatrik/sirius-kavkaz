@@ -520,6 +520,21 @@ html {
 }
 
 @media(max-width: 900px) {
+
+    #home {
+        height: auto !important;
+        min-height: 100vh !important;
+        aspect-ratio: auto !important;
+        background-size: cover !important;
+        padding-top: 100px !important;
+    }
+    .hero-card {
+        padding: 1.5rem !important;
+    }
+    .hero-card h2 {
+        font-size: 2rem !important;
+    }
+
     .guide-container { flex-direction: column !important; align-items: stretch !important; }
     .guide-sidebar { flex: 1 1 auto !important; width: 100% !important; margin-bottom: 20px; }
     #guide-nav { flex-direction: row; flex-wrap: wrap; justify-content: center; }
