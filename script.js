@@ -168,7 +168,7 @@ const routePoints = [
             },
             {
                 "url": "images/Музуй Леонардо Да Винчи - снаружи.jpg",
-                "caption": "Музуй Леонардо Да Винчи - снаружи"
+                "caption": "Музей Леонардо Да Винчи - изнутри"
             }
         ]
     },
@@ -456,7 +456,7 @@ const routePoints = [
         "images": [
             {
                 "url": "https://avatars.mds.yandex.net/get-altay/13461681/2a00000190f9040a9bc57bc0c0059d1e38c4/L_height",
-                "caption": "Буковый лес"
+                "caption": "Вход на поляну"
             },
             {
                 "url": "images/Буковая поляна - вид изнутри 2.jpg",
@@ -488,7 +488,7 @@ const routePoints = [
         "images": [
             {
                 "url": "https://avatars.mds.yandex.net/get-altay/10812438/2a0000018c3f84bfb686579f37e3ad5380f0/L_height",
-                "caption": "Руины башни крепости"
+                "caption": "Подход к крепости"
             },
             {
                 "url": "images/Хостинская крепость - руины крепости.jpg",
