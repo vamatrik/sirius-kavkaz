@@ -1,3 +1,67 @@
+
+document.addEventListener('DOMContentLoaded', () => {
+    const track = document.getElementById('slider-track');
+    if(!track) return;
+    routePoints.forEach((point, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'info-slide';
+        slide.style.minWidth = '100%';
+        slide.style.flex = '0 0 100%';
+        slide.style.boxSizing = 'border-box';
+        
+        let yandexLinkHtml = point.yandexUrl 
+            ? `<h3 style="margin-bottom:15px;"><a href="${point.yandexUrl}" target="_blank" style="color: inherit; text-decoration: underline;">${point.title}</a></h3>`
+            : `<h3 style="margin-bottom:15px;">${point.title}</h3>`;
+            
+        let videoHtml = '';
+        if (point.videoUrl) {
+            if (point.videoUrl.endsWith('.mp4')) {
+                videoHtml = `<div style="margin-bottom: 20px;"><video width="100%" height="550" controls preload="metadata" style="border-radius:10px; background:transparent;"><source src="${point.videoUrl}" type="video/mp4">Ваш браузер не поддерживает видео.</video></div>`;
+            } else {
+                videoHtml = `<div style="margin-bottom: 20px;"><iframe width="100%" height="550" src="${point.videoUrl}" frameborder="0" allowfullscreen style="border-radius:10px;"></iframe></div>`;
+            }
+        }
+        
+        let allImages = [];
+        if(point.images && point.images.length > 0) {
+            allImages = point.images;
+        } else if (point.img) {
+            allImages.push({url: point.img, caption: ''});
+        }
+        const midPoint = allImages.length <= 2 ? allImages.length : Math.ceil(allImages.length / 2);
+        
+        let topGalleryHtml = '<div class="masonry-gallery">';
+        let bottomGalleryHtml = '<div class="masonry-gallery">';
+        
+        allImages.forEach((imgObj, idx) => {
+            let capHTML = imgObj.caption ? `<div class="masonry-caption">${imgObj.caption}</div>` : '';
+            let itemHTML = `<div class="masonry-item"><img src="${imgObj.url}" alt="">${capHTML}</div>`;
+            if (idx < midPoint) {
+                topGalleryHtml += itemHTML;
+            } else {
+                bottomGalleryHtml += itemHTML;
+            }
+        });
+        topGalleryHtml += '</div>';
+        bottomGalleryHtml += '</div>';
+        
+        slide.innerHTML = `
+            ${topGalleryHtml}
+            ${videoHtml}
+            <div class="info-text">
+                <div class="p-tags"><span class="tag">${point.category}</span></div>
+                ${yandexLinkHtml}
+                <div class="info-block"><h4>Кратко:</h4><p>${point.brief || ''}</p></div>
+                <div class="info-block"><h4>Подробно:</h4><p>${point.desc || ''}</p></div>
+                <div class="info-block"><h4>Значение:</h4><p>${point.importance || ''}</p></div>
+                <div class="info-block"><h4>Интересный факт:</h4><p>${point.fact || ''}</p></div>
+            </div>
+            ${bottomGalleryHtml}
+        `;
+        track.appendChild(slide);
+    });
+});
+
 const routePoints = [
     {
         "id": "1",
@@ -374,10 +438,6 @@ const routePoints = [
             {
                 "url": "user_photos/Пруд в парке Южные Культуры.jpg",
                 "caption": "Фото снял один из участников проекта"
-            },
-            {
-                "url": "https://commons.wikimedia.org/wiki/Special:FilePath/Alley_in_park.jpg?width=800",
-                "caption": "Аллея парка"
             },
             {
                 "url": "images/Парк Южные Культуры - аллеи.jpg",
@@ -856,140 +916,55 @@ function initMap() {
 }
 
 function showPointInfo(point) {
-    document.getElementById('p-category').innerText = point.category;
-    
-    if(point.yandexUrl) {
-        document.getElementById('p-title-link').innerText = point.title;
-        document.getElementById('p-title-link').href = point.yandexUrl;
-        document.getElementById('p-title-link').style.pointerEvents = "auto";
-        document.getElementById('p-title-link').style.textDecoration = "underline";
-    } else {
-        document.getElementById('p-title-link').innerText = point.title;
-        document.getElementById('p-title-link').removeAttribute('href');
-        document.getElementById('p-title-link').style.pointerEvents = "none";
-        document.getElementById('p-title-link').style.textDecoration = "none";
-    }
-    
-    document.getElementById('p-brief').innerText = point.brief;
-    document.getElementById('p-desc').innerText = point.desc;
-    document.getElementById('p-importance').innerText = point.importance;
-    document.getElementById('p-fact').innerText = point.fact;
-    
-    const topGallery = document.getElementById('p-gallery-top');
-    const bottomGallery = document.getElementById('p-gallery-bottom');
-    if(topGallery) topGallery.innerHTML = '';
-    if(bottomGallery) bottomGallery.innerHTML = '';
-    
-    let allImages = [];
-    if(point.images && point.images.length > 0) {
-        allImages = point.images;
-    } else if (point.img) {
-        allImages.push({url: point.img, caption: ''});
-    }
-
-    const midPoint = allImages.length <= 2 ? allImages.length : Math.ceil(allImages.length / 2);
-    
-    allImages.forEach((imgObj, index) => {
-        let capHTML = imgObj.caption ? `<div class="masonry-caption">${imgObj.caption}</div>` : '';
-        let itemHTML = `<div class="masonry-item"><img src="${imgObj.url}" alt="">${capHTML}</div>`;
-        if(index < midPoint) {
-            if(topGallery) topGallery.innerHTML += itemHTML;
-        } else {
-            if(bottomGallery) bottomGallery.innerHTML += itemHTML;
-        }
-    });
-
-    const videoContainer = document.getElementById('p-video-container');
-    if(videoContainer) {
-        if(point.videoUrl) {
-            if (point.videoUrl.endsWith('.mp4')) {
-            videoContainer.innerHTML = `<video width="100%" height="550" controls preload="metadata" style="border-radius:10px; background:#000;"><source src="${point.videoUrl}" type="video/mp4">Ваш браузер не поддерживает видео.</video>`;
-        } else {
-            videoContainer.innerHTML = `<iframe width="100%" height="550" src="${point.videoUrl}" frameborder="0" allowfullscreen style="border-radius:10px;"></iframe>`;
-        }
-            videoContainer.style.display = 'block';
-        } else {
-            videoContainer.innerHTML = '';
-            videoContainer.style.display = 'none';
-        }
-    }
-
     document.getElementById('empty-state').style.display = 'none';
-    document.querySelector('.info-content').style.display = 'block';
+    document.getElementById('slider-viewport').style.display = 'block';
+    
+    const track = document.getElementById('slider-track');
+    track.style.transform = `translateX(-${currentPointIndex * 100}%)`;
+    
     setTimeout(() => { document.querySelector('.info-panel').scrollIntoView({behavior: 'smooth', block: 'start'}); }, 100);
 }
-
-function switchGuide(event, targetId) {
-    document.querySelectorAll('#guide-nav li').forEach(li => {
-        li.classList.remove('active');
-    });
-    if(event && event.currentTarget) event.currentTarget.classList.add('active');
-    
-    document.querySelectorAll('.guide-pane').forEach(pane => {
-        pane.classList.remove('active');
-    });
-    document.getElementById(targetId).classList.add('active');
-
-        const guideBg = {
-        'guide-overview': 'images/Черное море побережье фон - вкладка 1.jpg',
-        'guide-geo': 'images/Кавказский заповедник на фон - вкладка 2.jpg',
-        'guide-econ': 'images/Задний фон Сириус - вкладка 3.jpeg',
-        'guide-pop': 'images/Храм на задний фон - вкладка 4.jpg',
-        'guide-cult': 'images/Табличка Ефремов задний план - 5 вкладка.jpg'
-    };
-    
-    if(guideBg[targetId]) {
-        document.getElementById('guide').style.backgroundImage = `linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9)), url("${guideBg[targetId]}")`;
-    }
-}
-
-
-let currentPointIndex = -1;
 
 function navPoint(delta) {
     if (currentPointIndex === -1) return;
     let newIndex = currentPointIndex + delta;
     
+    const track = document.getElementById('slider-track');
+    
     if (newIndex >= routePoints.length) {
-        playRouletteAnimation();
+        // Physical tape roulette animation back to 0
+        document.getElementById('nav-prev').style.display = 'none';
+        document.getElementById('nav-next').style.display = 'none';
+        
+        track.style.transition = 'transform 3.5s cubic-bezier(0.15, 0.85, 0.25, 1)'; // smooth roulette ease-out
+        currentPointIndex = 0;
+        track.style.transform = `translateX(0%)`;
+        
+        let pt = routePoints[0];
+        window.mapObj.panTo(pt.coords, {flying: true, duration: 3500});
+        
+        setTimeout(() => {
+            track.style.transition = 'transform 0.5s ease-in-out';
+            updateNavArrows();
+            showPointInfo(pt);
+        }, 3500);
         return;
     }
     
     if (newIndex < 0) {
         newIndex = 0; 
     }
+    
+    track.style.transition = 'transform 0.5s ease-in-out';
+    currentPointIndex = newIndex;
     let pt = routePoints[newIndex];
     window.mapObj.panTo(pt.coords, {flying: true, duration: 800});
     showPointInfo(pt);
-    currentPointIndex = newIndex;
     updateNavArrows();
 }
 
-function playRouletteAnimation() {
-    let currentIndex = routePoints.length - 1;
-    let targetIndex = 0;
-    let steps = routePoints.length - 1;
-    
-    document.getElementById('nav-prev').style.display = 'none';
-    document.getElementById('nav-next').style.display = 'none';
-    
-    function step() {
-        if (currentIndex > targetIndex) {
-            currentIndex--;
-            showPointInfo(routePoints[currentIndex]);
-            
-            let progress = (steps - currentIndex) / steps;
-            let currentSpeed = (20 + Math.pow(progress, 3) * 300) * 3; 
-            
-            setTimeout(step, currentSpeed);
-        } else {
-            currentPointIndex = 0;
-            window.mapObj.panTo(routePoints[0].coords, {flying: true, duration: 1000});
-            updateNavArrows();
-        }
-    }
-    step();
-}
+
+
 function updateNavArrows() {
     document.getElementById('nav-prev').style.display = currentPointIndex > 0 ? 'flex' : 'none';
     // Always show right arrow to loop
