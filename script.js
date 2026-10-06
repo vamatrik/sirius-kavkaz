@@ -5,7 +5,7 @@ const routePoints = [
             43.413337,
             39.93146
         ],
-        "title": "1. Имеретинский морской вокзал",
+        "title": "1. Имеретинский морской порт",
         "yandexUrl": "https://yandex.ru/maps/-/CXU8mL7w",
         "category": "Транспорт / Отдых",
         "brief": "Современная яхтенная марина и морские ворота Сириуса.",
@@ -69,7 +69,7 @@ const routePoints = [
         "yandexUrl": "https://yandex.ru/maps/-/CXU8uRMW",
         "category": "Олимпийский парк / Архитектура",
         "brief": "Легендарный стадион открытия и закрытия Олимпиады-2014.",
-        "desc": "Спроектированный британскими архитекторами, стадион напоминает снежную вершину (отсюда и название в честь горы Фишт, что с адыгейского переводится как «Белая голова»). Именно здесь прошли самые зрелищные церемонии Олимпиады. После Игр стадион реконструировали, убрав центральную часть крыши, чтобы он соответствовал требованиям FIFA для проведения Чемпионата мира по футболу 2018 года.",
+        "desc": "Стадион напоминает снежную вершину (отсюда и название в честь горы Фишт, что с адыгейского переводится как «Белая голова»). Именно здесь прошли самые зрелищные церемонии Олимпиады. После Игр стадион реконструировали, убрав центральную часть крыши, чтобы он соответствовал требованиям FIFA для проведения Чемпионата мира по футболу 2018 года.",
         "importance": "Главный спортивный символ современной России на юге страны.",
         "fact": "При проектировании стадиона учитывалась высокая сейсмичность региона, каркас может выдержать землетрясение до 9 баллов.",
         "images": [
@@ -114,7 +114,7 @@ const routePoints = [
                 "caption": "Поющие фонтаны - ночью фото"
             }
         ],
-        "videoUrl": "https://rutube.ru/play/embed/79d9d7f3261c1a056ec2e8f32677828a"
+        "videoUrl": "videos/fountains.mp4"
     },
     {
         "id": "3.3",
@@ -195,7 +195,7 @@ const routePoints = [
                 "caption": "Музей Теслы - снаружи"
             }
         ],
-        "videoUrl": "https://rutube.ru/play/embed/6b4ab428d1e21dc55872c9d3857a9e64"
+        "videoUrl": "videos/tesla.mp4"
     },
     {
         "id": "3.6",
@@ -906,7 +906,7 @@ function showPointInfo(point) {
     const videoContainer = document.getElementById('p-video-container');
     if(videoContainer) {
         if(point.videoUrl) {
-            videoContainer.innerHTML = `<iframe width="100%" height="315" src="${point.videoUrl}" frameborder="0" allowfullscreen></iframe>`;
+            videoContainer.innerHTML = `<iframe width="100%" height="550" src="${point.videoUrl}" frameborder="0" allowfullscreen></iframe>`;
             videoContainer.style.display = 'block';
         } else {
             videoContainer.innerHTML = '';
