@@ -891,7 +891,7 @@ function showPointInfo(point) {
         allImages.push({url: point.img, caption: ''});
     }
 
-    const midPoint = Math.ceil(allImages.length / 2);
+    const midPoint = allImages.length <= 2 ? allImages.length : Math.ceil(allImages.length / 2);
     
     allImages.forEach((imgObj, index) => {
         let capHTML = imgObj.caption ? `<div class="masonry-caption">${imgObj.caption}</div>` : '';
@@ -949,19 +949,21 @@ let currentPointIndex = -1;
 function navPoint(delta) {
     if (currentPointIndex === -1) return;
     let newIndex = currentPointIndex + delta;
-    if (newIndex >= 0 && newIndex < routePoints.length) {
-        // Trigger click on the corresponding placemark
-        // But since we can't easily trigger click on map placemark by index without keeping an array of placemarks,
-        // we can just call showPointInfo and pan the map manually.
-        let pt = routePoints[newIndex];
-        window.mapObj.panTo(pt.coords, {flying: true, duration: 500});
-        showPointInfo(pt);
-        currentPointIndex = newIndex;
-        updateNavArrows();
+    if (newIndex >= routePoints.length) {
+        newIndex = 0; // Loop back
     }
+    if (newIndex < 0) {
+        newIndex = 0; // Safety
+    }
+    let pt = routePoints[newIndex];
+    window.mapObj.panTo(pt.coords, {flying: true, duration: 800});
+    showPointInfo(pt);
+    currentPointIndex = newIndex;
+    updateNavArrows();
 }
 
 function updateNavArrows() {
     document.getElementById('nav-prev').style.display = currentPointIndex > 0 ? 'flex' : 'none';
-    document.getElementById('nav-next').style.display = currentPointIndex < routePoints.length - 1 && currentPointIndex !== -1 ? 'flex' : 'none';
+    // Always show right arrow to loop
+    document.getElementById('nav-next').style.display = currentPointIndex !== -1 ? 'flex' : 'none';
 }
