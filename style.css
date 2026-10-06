@@ -480,8 +480,8 @@ html {
 
 /* Masonry Gallery */
 .masonry-gallery { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 15px; margin: 20px 0; }
-.masonry-item { flex: 1 1 calc(50% - 15px); min-width: 200px; position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; background: #000; }
-.masonry-item img { width: 100%; height: auto; max-height: 400px; object-fit: contain; display: block; border-radius: 12px; }
+.masonry-item { flex: 1 1 calc(50% - 15px); min-width: 200px; position: relative; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: center; background: transparent; }
+.masonry-item img { width: 100%; height: auto; display: block; border-radius: 12px; }
 .masonry-caption {
     position: absolute;
     bottom: 0;
@@ -539,7 +539,7 @@ html {
     width: 100%;
     display: block;
     object-fit: cover;
-    height: 300px;
+    height: 525px;
 }
 .guide-img-caption {
     position: absolute;

@@ -949,11 +949,14 @@ let currentPointIndex = -1;
 function navPoint(delta) {
     if (currentPointIndex === -1) return;
     let newIndex = currentPointIndex + delta;
+    
     if (newIndex >= routePoints.length) {
-        newIndex = 0; // Loop back
+        playRouletteAnimation();
+        return;
     }
+    
     if (newIndex < 0) {
-        newIndex = 0; // Safety
+        newIndex = 0; 
     }
     let pt = routePoints[newIndex];
     window.mapObj.panTo(pt.coords, {flying: true, duration: 800});
@@ -962,6 +965,31 @@ function navPoint(delta) {
     updateNavArrows();
 }
 
+function playRouletteAnimation() {
+    let currentIndex = routePoints.length - 1;
+    let targetIndex = 0;
+    let steps = routePoints.length - 1;
+    
+    document.getElementById('nav-prev').style.display = 'none';
+    document.getElementById('nav-next').style.display = 'none';
+    
+    function step() {
+        if (currentIndex > targetIndex) {
+            currentIndex--;
+            showPointInfo(routePoints[currentIndex]);
+            
+            let progress = (steps - currentIndex) / steps;
+            let currentSpeed = 20 + Math.pow(progress, 3) * 300; 
+            
+            setTimeout(step, currentSpeed);
+        } else {
+            currentPointIndex = 0;
+            window.mapObj.panTo(routePoints[0].coords, {flying: true, duration: 1000});
+            updateNavArrows();
+        }
+    }
+    step();
+}
 function updateNavArrows() {
     document.getElementById('nav-prev').style.display = currentPointIndex > 0 ? 'flex' : 'none';
     // Always show right arrow to loop
