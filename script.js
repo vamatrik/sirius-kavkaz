@@ -876,7 +876,7 @@ function navPoint(delta) {
         document.getElementById('nav-prev').style.display = 'none';
         document.getElementById('nav-next').style.display = 'none';
         
-        track.style.transition = 'transform 3.5s cubic-bezier(0.15, 0.85, 0.25, 1)'; // smooth roulette ease-out
+        track.style.transition = 'transform 3.5s ease-in-out'; // smooth roulette ease-out
         currentPointIndex = 0;
         track.style.transform = `translateX(0%)`;
         
@@ -905,6 +905,30 @@ function navPoint(delta) {
 
 
 
+function switchGuide(event, targetId) {
+    document.querySelectorAll('#guide-nav li').forEach(li => {
+        li.classList.remove('active');
+    });
+    if(event && event.currentTarget) event.currentTarget.classList.add('active');
+    
+    document.querySelectorAll('.guide-pane').forEach(pane => {
+        pane.classList.remove('active');
+    });
+    document.getElementById(targetId).classList.add('active');
+
+        const guideBg = {
+        'guide-overview': 'images/Черное море побережье фон - вкладка 1.jpg',
+        'guide-geo': 'images/Кавказский заповедник на фон - вкладка 2.jpg',
+        'guide-econ': 'images/Задний фон Сириус - вкладка 3.jpeg',
+        'guide-pop': 'images/Храм на задний фон - вкладка 4.jpg',
+        'guide-cult': 'images/Табличка Ефремов задний план - 5 вкладка.jpg'
+    };
+    
+    if(guideBg[targetId]) {
+        document.getElementById('guide').style.backgroundImage = `linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.9)), url("${guideBg[targetId]}")`;
+    }
+}
+
 function updateNavArrows() {
     document.getElementById('nav-prev').style.display = currentPointIndex > 0 ? 'flex' : 'none';
     // Always show right arrow to loop
@@ -916,7 +940,7 @@ const track = document.getElementById('slider-track');
     if(track) {
     routePoints.forEach((point, index) => {
         const slide = document.createElement('div');
-        slide.className = 'info-slide';
+        slide.className = 'info-slide info-content';
         slide.style.minWidth = '100%';
         slide.style.flex = '0 0 100%';
         slide.style.boxSizing = 'border-box';
