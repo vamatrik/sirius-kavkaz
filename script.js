@@ -857,10 +857,29 @@ function initMap() {
 
 function showPointInfo(point) {
     document.getElementById('empty-state').style.display = 'none';
-    document.getElementById('slider-viewport').style.display = 'block';
+    
+    const viewport = document.getElementById('slider-viewport');
+    viewport.style.display = 'block';
     
     const track = document.getElementById('slider-track');
     track.style.transform = `translateX(-${currentPointIndex * 100}%)`;
+    
+    const activeSlide = track.children[currentPointIndex];
+    if (activeSlide) {
+        viewport.style.height = activeSlide.offsetHeight + 'px';
+        
+        // Also observe images loading in case they change height
+        const images = activeSlide.querySelectorAll('img');
+        images.forEach(img => {
+            if (!img.complete) {
+                img.onload = () => {
+                    if (currentPointIndex === Array.from(track.children).indexOf(activeSlide)) {
+                        viewport.style.height = activeSlide.offsetHeight + 'px';
+                    }
+                };
+            }
+        });
+    }
     
     setTimeout(() => { document.querySelector('.info-panel').scrollIntoView({behavior: 'smooth', block: 'start'}); }, 100);
 }
