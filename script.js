@@ -940,7 +940,8 @@ const track = document.getElementById('slider-track');
     if(track) {
     routePoints.forEach((point, index) => {
         const slide = document.createElement('div');
-        slide.className = 'info-slide info-content';
+        slide.className = 'info-slide';
+        slide.style.padding = '30px';
         slide.style.minWidth = '100%';
         slide.style.flex = '0 0 100%';
         slide.style.boxSizing = 'border-box';
