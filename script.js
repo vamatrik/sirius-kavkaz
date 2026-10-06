@@ -1,66 +1,6 @@
 
-document.addEventListener('DOMContentLoaded', () => {
-    const track = document.getElementById('slider-track');
-    if(!track) return;
-    routePoints.forEach((point, index) => {
-        const slide = document.createElement('div');
-        slide.className = 'info-slide';
-        slide.style.minWidth = '100%';
-        slide.style.flex = '0 0 100%';
-        slide.style.boxSizing = 'border-box';
-        
-        let yandexLinkHtml = point.yandexUrl 
-            ? `<h3 style="margin-bottom:15px;"><a href="${point.yandexUrl}" target="_blank" style="color: inherit; text-decoration: underline;">${point.title}</a></h3>`
-            : `<h3 style="margin-bottom:15px;">${point.title}</h3>`;
-            
-        let videoHtml = '';
-        if (point.videoUrl) {
-            if (point.videoUrl.endsWith('.mp4')) {
-                videoHtml = `<div style="margin-bottom: 20px;"><video width="100%" height="550" controls preload="metadata" style="border-radius:10px; background:transparent;"><source src="${point.videoUrl}" type="video/mp4">Ваш браузер не поддерживает видео.</video></div>`;
-            } else {
-                videoHtml = `<div style="margin-bottom: 20px;"><iframe width="100%" height="550" src="${point.videoUrl}" frameborder="0" allowfullscreen style="border-radius:10px;"></iframe></div>`;
-            }
-        }
-        
-        let allImages = [];
-        if(point.images && point.images.length > 0) {
-            allImages = point.images;
-        } else if (point.img) {
-            allImages.push({url: point.img, caption: ''});
-        }
-        const midPoint = allImages.length <= 2 ? allImages.length : Math.ceil(allImages.length / 2);
-        
-        let topGalleryHtml = '<div class="masonry-gallery">';
-        let bottomGalleryHtml = '<div class="masonry-gallery">';
-        
-        allImages.forEach((imgObj, idx) => {
-            let capHTML = imgObj.caption ? `<div class="masonry-caption">${imgObj.caption}</div>` : '';
-            let itemHTML = `<div class="masonry-item"><img src="${imgObj.url}" alt="">${capHTML}</div>`;
-            if (idx < midPoint) {
-                topGalleryHtml += itemHTML;
-            } else {
-                bottomGalleryHtml += itemHTML;
-            }
-        });
-        topGalleryHtml += '</div>';
-        bottomGalleryHtml += '</div>';
-        
-        slide.innerHTML = `
-            ${topGalleryHtml}
-            ${videoHtml}
-            <div class="info-text">
-                <div class="p-tags"><span class="tag">${point.category}</span></div>
-                ${yandexLinkHtml}
-                <div class="info-block"><h4>Кратко:</h4><p>${point.brief || ''}</p></div>
-                <div class="info-block"><h4>Подробно:</h4><p>${point.desc || ''}</p></div>
-                <div class="info-block"><h4>Значение:</h4><p>${point.importance || ''}</p></div>
-                <div class="info-block"><h4>Интересный факт:</h4><p>${point.fact || ''}</p></div>
-            </div>
-            ${bottomGalleryHtml}
-        `;
-        track.appendChild(slide);
-    });
-});
+
+    
 
 const routePoints = [
     {
@@ -901,9 +841,9 @@ function initMap() {
         });
         
         placemark.events.add('click', function () {
+            currentPointIndex = routePoints.findIndex(p => p.id === point.id);
             showPointInfo(point);
-        currentPointIndex = routePoints.findIndex(p => p.id === point.id);
-        updateNavArrows();
+            updateNavArrows();
         });
 
         window.mapObj.geoObjects.add(placemark);
@@ -969,4 +909,67 @@ function updateNavArrows() {
     document.getElementById('nav-prev').style.display = currentPointIndex > 0 ? 'flex' : 'none';
     // Always show right arrow to loop
     document.getElementById('nav-next').style.display = currentPointIndex !== -1 ? 'flex' : 'none';
+}
+
+
+const track = document.getElementById('slider-track');
+    if(track) {
+    routePoints.forEach((point, index) => {
+        const slide = document.createElement('div');
+        slide.className = 'info-slide';
+        slide.style.minWidth = '100%';
+        slide.style.flex = '0 0 100%';
+        slide.style.boxSizing = 'border-box';
+        
+        let yandexLinkHtml = point.yandexUrl 
+            ? `<h3 style="margin-bottom:15px;"><a href="${point.yandexUrl}" target="_blank" style="color: inherit; text-decoration: underline;">${point.title}</a></h3>`
+            : `<h3 style="margin-bottom:15px;">${point.title}</h3>`;
+            
+        let videoHtml = '';
+        if (point.videoUrl) {
+            if (point.videoUrl.endsWith('.mp4')) {
+                videoHtml = `<div style="margin-bottom: 20px;"><video width="100%" height="550" controls preload="metadata" style="border-radius:10px; background:transparent;"><source src="${point.videoUrl}" type="video/mp4">Ваш браузер не поддерживает видео.</video></div>`;
+            } else {
+                videoHtml = `<div style="margin-bottom: 20px;"><iframe width="100%" height="550" src="${point.videoUrl}" frameborder="0" allowfullscreen style="border-radius:10px;"></iframe></div>`;
+            }
+        }
+        
+        let allImages = [];
+        if(point.images && point.images.length > 0) {
+            allImages = point.images;
+        } else if (point.img) {
+            allImages.push({url: point.img, caption: ''});
+        }
+        const midPoint = allImages.length <= 2 ? allImages.length : Math.ceil(allImages.length / 2);
+        
+        let topGalleryHtml = '<div class="masonry-gallery">';
+        let bottomGalleryHtml = '<div class="masonry-gallery">';
+        
+        allImages.forEach((imgObj, idx) => {
+            let capHTML = imgObj.caption ? `<div class="masonry-caption">${imgObj.caption}</div>` : '';
+            let itemHTML = `<div class="masonry-item"><img src="${imgObj.url}" alt="">${capHTML}</div>`;
+            if (idx < midPoint) {
+                topGalleryHtml += itemHTML;
+            } else {
+                bottomGalleryHtml += itemHTML;
+            }
+        });
+        topGalleryHtml += '</div>';
+        bottomGalleryHtml += '</div>';
+        
+        slide.innerHTML = `
+            ${topGalleryHtml}
+            ${videoHtml}
+            <div class="info-text">
+                <div class="p-tags"><span class="tag">${point.category}</span></div>
+                ${yandexLinkHtml}
+                <div class="info-block"><h4>Кратко:</h4><p>${point.brief || ''}</p></div>
+                <div class="info-block"><h4>Подробно:</h4><p>${point.desc || ''}</p></div>
+                <div class="info-block"><h4>Значение:</h4><p>${point.importance || ''}</p></div>
+                <div class="info-block"><h4>Интересный факт:</h4><p>${point.fact || ''}</p></div>
+            </div>
+            ${bottomGalleryHtml}
+        `;
+        track.appendChild(slide);
+    });
 }
